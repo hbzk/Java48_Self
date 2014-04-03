@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fb-friends>
+  <all_list>
+    <friends_1></friends_1>
+    <friends_2></friends_2>
+    <friends_3></friends_3>
+    .
+    .
+    .
+  </all_list>
+
+  <mate>
+    <mate_user></mate_user>
+  </mate>
+
+  <family>
+    <family_1></family_1>
+    <family_2></family_2>
+    .
+    .
+  </family>
+
+  <best_group>
+    <group_list>
+      <friends_1></friends_1>
+      <friends_3></friends_3>
+      <friends_5></friends_5>
+      .
+      .
+    </group_list>
+  </best_group>
+
+  <knower_group>
+    <group_list>
+      <friends_1></friends_1>
+      <friends_3></friends_3>
+      <friends_5></friends_5>
+      .
+      .
+    </group_list>
+  </knower_group>
+
+  <far_group>
+    <group_list>
+      <friends_1></friends_1>
+      <friends_3></friends_3>
+      <friends_5></friends_5>
+      .
+      .
+    </group_list>
+  </far_group>
+
+  <added_group>
+    <group_name></group_name>
+    <group_list>
+      <friends_1></friends_1>
+      <friends_3></friends_3>
+      <friends_5></friends_5>
+      .
+      .
+    </group_list>
+  </added_group>
+
+</fb-friends>

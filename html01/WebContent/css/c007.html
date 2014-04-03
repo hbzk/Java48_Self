@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<!-- 엘리먼트의 배치
+  1. 공중 부양
+    - 웹 브라우저는 HTML에 작성된 순서대로 왼쪽에서 오른쪽으로 배치한다. 끝을 만날 때 까지
+    - 위에서 아래로 배치한다
+    - float : left 또는 right => 출력 순서에서 탈출하여 공중 부양한다. 왼쪽 또는 오른쪽으로 붙인다.
+    - 출력 될 그 위치에서 공중 부양 후 좌우로만 이동 가능
+    *clear 속성
+    => 공중 부양으로 점유된 공간을 피하라는 명령
+    
+    
+  2. 절대 좌표 지정
+    - 절대 좌표로 위치를 관리하는 부모 엘리먼트를 기준으로 자식 엘리먼트의 위치를 설정
+    - 부모가 절대 좌표로 위치를 관리하지 않는다면,
+      body 엘리먼트를 기준으로 자식 엘리먼트의 위치 설정
+    - position: absolute;
+    - 위치 설정: left, right, top, bottom 속성으로 설정한다.
+    - absolute일 경우 너비 높이를 지정해야 한다.
+    
+  3. 상대 좌표 지정
+    - 출력 대기자 목록에서 빠지지 않은 상태에서 위치 이동
+    - position: relative
+    - 현재 위치에서 좌/우, 상/하로 이동
+    
+  4. 웹 브라우저에 고정
+    - 웹 브라우저의 내용 창을 기준으로 엘리먼트의 위치 설정
+    - 내용을 스크롤 하더라도 엘리먼트는 계속 그 위치를 고수한다.
+    - position: fixed; 
+-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>css007</title>
+<style type="text/css">
+body {
+	
+}
+
+#d1 {
+	border: 1px solid red;
+	border-left: 5px solid red;
+	border-right: 20px solid red;
+	padding-left: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 190px;
+}
+
+#d2 {
+	width: 180px;
+	/*   height: 180px; */
+	margin-top: 15px;
+	border: 1px dotted blue;
+	float: left;
+}
+
+#footer {
+  border: 1px solid green;
+  font-size: 80%;
+  text-align: center;
+  clear: left;
+}
+div * { color : red;}
+
+</style>
+
+</head>
+<body>
+	오호라.. 비트교육센터...
+	<div id="d2">
+		<h1 id="header05" class="c1">테스트5</h1>
+		<p class="c1">테스트...05</p>
+		<h1 id="header06">테스트6</h1>
+		<p>테스트...06</p>
+		<div id="d21">
+			<h1>테스트 7</h1>
+			<p>테스트... 07</p>
+		</div>
+		<h1 id="header08" class="c1">테스트 8</h1>
+    <p>테스트... 08</p>
+    <h1 id="header09" class="c1">테스트 9</h1>
+    <p>테스트... 09</p>
+    <h1 id="header08" class="c1">테스트 10</h1>
+    <p>테스트... 10</p>
+    <h1 id="header08" class="c1">테스트 11</h1>
+    <p>테스트... 11</p>
+
+
+    
+	</div>
+
+	<div id="d1">
+		<div id="d11">
+			<h1 id="header01" class="c1 c2">테스트1</h1>
+			<p id="p1" class="c1 c2">FitBit, FuelBand와 같은 피트니스 트래킹 디바이스가 많은
+				인기를 얻고 있는 가운데, 발목에 차는 웨어러블 기기가 나왔다. FlyFit이라는 이름의 이 제품은 다른 피트니스 트래킹
+				기기처럼 스마트폰에 연동해서 활동량을 측정한다는 점은 비슷하지만, 손목이 아닌 발목에 착용한다는 것이 가장 큰 특징이다.
+				FitBit과 같이 손목에 차는 기기의 가장 큰 문제점중의 하나는, 자전거를 탈 때 손목의 움직임이 많지 않아서 그에
+				연관된 활동량을 제대로 측정하지 못한다는 것이였다.</p>
+			<h1 id="header02">테스트2</h1>
+			<p>FitBit, FuelBand와 같은 피트니스 트래킹 디바이스가 많은 인기를 얻고 있는 가운데, 발목에 차는
+				웨어러블 기기가 나왔다. FlyFit이라는 이름의 이 제품은 다른 피트니스 트래킹 기기처럼 스마트폰에 연동해서 활동량을
+				측정한다는 점은 비슷하지만, 손목이 아닌 발목에 착용한다는 것이 가장 큰 특징이다. FitBit과 같이 손목에 차는 기기의
+				가장 큰 문제점중의 하나는, 자전거를 탈 때 손목의 움직임이 많지 않아서 그에 연관된 활동량을 제대로 측정하지 못한다는
+				것이였다.</p>
+		</div>
+
+		<div id="d12">
+			<h1 id="header03" class="c2">테스트3</h1>
+			<p class="c2">테스트...03</p>
+			<h1 id="header04">테스트4</h1>
+			<p>FitBit, FuelBand와 같은 피트니스 트래킹 디바이스가 많은 인기를 얻고 있는 가운데, 발목에 차는
+				웨어러블 기기가 나왔다. FlyFit이라는 이름의 이 제품은 다른 피트니스 트래킹 기기처럼 스마트폰에 연동해서 활동량을
+				측정한다는 점은 비슷하지만, 손목이 아닌 발목에 착용한다는 것이 가장 큰 특징이다. FitBit과 같이 손목에 차는 기기의
+				가장 큰 문제점중의 하나는, 자전거를 탈 때 손목의 움직임이 많지 않아서 그에 연관된 활동량을 제대로 측정하지 못한다는
+				것이였다.</p>
+		</div>
+	</div>
+
+
+  <div id="footer">
+    <p>이 예제의 모든 권한은 Java48 기에 있습니다.</p>
+    <address>서울시 서초구 서초동 어쩌구 저쩌구...</address>
+  
+  </div>
+
+</body>
+</html>
+

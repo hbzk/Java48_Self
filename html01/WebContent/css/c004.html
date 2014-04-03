@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<!-- 의사(pseudo) 셀렉터(셀렉터의 상태)
+문법) 대상: 상태
+예)
+a:hover - 링크에 마우스가 올라간 상태
+a:visited - 한 번 방문한 링크
+-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>css004</title>
+<style type="text/css">
+h1.c2:hover {
+  background-color: black; 
+  color: white;
+}
+
+/* CSS 스타일 상속 
+- 일부 스타일은 자식 엘리먼트로 상속된다.
+*/
+
+/* 
+h1::FIRST-CHILD {
+  border: 2px solid blue;
+  color: red;
+}
+*/
+
+#p1::FIRST-LETTER {
+	color: blue;
+	font-size: 60pt;
+	float: left;
+	display: block;
+}
+#header02: { float:none;}
+
+</style>
+
+</head>
+<body>
+<div id="d1">
+  <div id="d11">
+    <h1 id="header01" class="c1 c2">테스트1</h1>
+    <p id="p1" class="c1 c2">문서 객체 모델(DOM; Document Object Model)은 객체 지향 모델로써 구조화된 문서를 표현하는 형식이다. DOM은 플랫폼/언어 중립적으로 구조화된 문서를 표현하는 W3C의 공식 표준이다. DOM은 또한 W3C가 표준화한 여러 개의 API의 기반이 된다.
+
+DOM은 HTML 문서의 요소를 제어하기 위해 웹 브라우저에서 처음 지원되었다. DOM은 동적으로 문서의 내용, 구조, 스타일에 접근하고 변경하는 수단이었다. 브라우저 사이에 DOM 구현이 호환되지 않음에 따라, W3C에서 DOM 표준 규격을 작성하게 되었다.</p>
+    <h1 id="header02">테스트2</h1>
+    <p>테스트...02</p>
+  </div>
+
+  <div id="d12">
+    <h1 id="header03" class="c2">테스트3</h1>
+    <p class="c2">테스트...03</p>
+    <h1 id="header04">테스트4</h1>
+    <p>테스트...04</p>
+  </div>
+ </div>
+ 
+<div id="d2">
+  <h1 id="header05" class="c1">테스트5</h1>
+  <p class="c1">테스트...05</p>
+  <h1 id="header06">테스트6</h1>
+  <p>테스트...06</p>
+  <div id="d21">
+    <h1>테스트 7</h1>
+    <p>오호라... 07</p>
+  </div>
+</div>
+
+
+</body>
+</html>
+

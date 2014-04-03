@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feeds>
+  <feed>
+    <name>홍길동</name>
+    <photo>/a.gif</photo>
+    <content>가나다...</content>
+    <share-link>
+      <url>http://asdf.as/qweasdf</url>
+      <home>youtube.com</home>
+      <caption>자막이름</caption>
+      <content>내용...글자..</content>
+      <image>대표이미지</image>
+    </share-link>
+  </feed>
+</feeds>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<!-- 박스
+1. border
+  : 엘리먼트의 테두리 지정
+  : border-top(-left, -right, -bottom) -> 개별 지정 가능
+  
+2. padding
+  : 테두리와 내용 사이의 여백 지정
+  : padding-top(-left, -right, -bottom) -> 개별 지정 가능
+
+3. margin
+  : 테두리 바깥 여백 지정
+  : margin-top(-left, -right, -bottom) -> 개별 지정 가능
+  : margin: top left bottom right (순서로 값 지정)
+  : margin: top/bottom  left/right (두 개의 값으로 지정 가능)
+  : margin: 값 (한 개의 값을 지정하면 사방 모두에 적용)
+  : **상/하 엘리먼트 마진은 겹쳐지고 큰 값으로 표현 됨.  좌/우는 x
+
+4. width, height: 넓이 높이 지정
+
+-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>css006</title>
+<style type="text/css">
+
+#d1 {
+  border: 1px solid red;
+  border-left: 5px solid red;
+  border-right: 20px solid red;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#d2 {
+  width: 180px;
+/*   height: 180px; */
+  margin-top: 15px;
+  border: 1px dotted blue;
+
+}
+
+</style>
+
+</head>
+<body>
+오호라.. 비트교육센터...
+<div id="d1">
+  <div id="d11">
+    <h1 id="header01" class="c1 c2">테스트1</h1>
+    <p id="p1" class="c1 c2">테스트...01</p>
+    <h1 id="header02">테스트2</h1>
+    <p>테스트...02</p>
+  </div>
+
+  <div id="d12">
+    <h1 id="header03" class="c2">테스트3</h1>
+    <p class="c2">테스트...03</p>
+    <h1 id="header04">테스트4</h1>
+    <p>테스트...04</p>
+  </div>
+ </div>
+ 
+<div id="d2">
+  <h1 id="header05" class="c1">테스트5</h1>
+  <p class="c1">테스트...05</p>
+  <h1 id="header06">테스트6</h1>
+  <p>테스트...06</p>
+  <div id="d21">
+    <h1>테스트 7</h1>
+    <p>오호라... 07</p>
+  </div>
+</div>
+
+
+</body>
+</html>
+

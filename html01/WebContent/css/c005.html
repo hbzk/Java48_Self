@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<!-- 폰트 다루기 
+1. font-family
+  => font-family : 폰트, 폰트, 폰트, 패밀리;
+  : 왼쪽부터 순서대로 폰트를 찾는다.
+
+2. font-size
+  : 폰트의 크기(높이)를 지정
+  1) 상수값: xx-small, x-smail, small, medium, large, x-large, xx-large
+  2) pixel : 14px, 20px
+  3) 백분율 : 120%, 80%
+  4) 배수 : 1.2em, 0.8em
+  
+  : 실무 권고 => body에 기준 크기를 상수로 정의한다. 
+    나머지 엘리먼트는 배수나 백분율을 사용하여 지정.
+
+  3. font-weight : lighter, normal, bold, bolder
+  : 폰트의 두께를 지정
+  
+  4. text-decoration: none, underline, overline, line-through, blink
+  
+  5. font-style : italic, oblique, normal
+    italic => 기울림 폰트를 지정 (폰트 파일에 기울림체가 있어야 한다.)
+    oblique => 폰트 파일에 기울림체가 없어도 강제로 기울인다. (출력이 거칠다)
+
+  6. font-color
+    1) 상수값 사용: silver, aqua, black, white, blue...
+    2) rgb (백분율,백분율, 백분율) : rgb(100%, 56%, 90% )
+    3) rgb (값, 값, 값) : rgb (255.0.0)
+    4) #rrggbb: #ff0000=> #f000
+    => #445566 =? 456
+
+-->
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>css005</title>
+<style type="text/css">
+
+body {
+  font-family: Arial, serif;
+  font-size: small;
+}
+
+h1 {
+  font-size: 180%;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+</style>
+
+</head>
+<body>
+오호라.. 비트교육센터...
+<div id="d1">
+  <div id="d11">
+    <h1 id="header01" class="c1 c2">테스트1</h1>
+    <p id="p1" class="c1 c2">문서 객체 모델(DOM; Document Object Model)은 객체 지향 모델로써 구조화된 문서를 표현하는 형식이다. DOM은 플랫폼/언어 중립적으로 구조화된 문서를 표현하는 W3C의 공식 표준이다. DOM은 또한 W3C가 표준화한 여러 개의 API의 기반이 된다.
+
+DOM은 HTML 문서의 요소를 제어하기 위해 웹 브라우저에서 처음 지원되었다. DOM은 동적으로 문서의 내용, 구조, 스타일에 접근하고 변경하는 수단이었다. 브라우저 사이에 DOM 구현이 호환되지 않음에 따라, W3C에서 DOM 표준 규격을 작성하게 되었다.</p>
+    <h1 id="header02">테스트2</h1>
+    <p>테스트...02</p>
+  </div>
+
+  <div id="d12">
+    <h1 id="header03" class="c2">테스트3</h1>
+    <p class="c2">테스트...03</p>
+    <h1 id="header04">테스트4</h1>
+    <p>테스트...04</p>
+  </div>
+ </div>
+ 
+<div id="d2">
+  <h1 id="header05" class="c1">테스트5</h1>
+  <p class="c1">테스트...05</p>
+  <h1 id="header06">테스트6</h1>
+  <p>테스트...06</p>
+  <div id="d21">
+    <h1>테스트 7</h1>
+    <p>오호라... 07</p>
+  </div>
+</div>
+
+
+</body>
+</html>
+

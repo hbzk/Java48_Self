@@ -1,0 +1,409 @@
+@CHARSET "UTF-8";
+
+/* 초기화 ===================================*/
+body,h1,h2,h3,h4,h5,h6,p,ul,li,menu,dir,input { margin: 0; font-weight: normal; }
+h1,h2,h3,h4,h5,h6 { font-size: 100%; }
+ul { padding: 0; }
+li { list-style: none; }
+a { color: inherit; text-decoration: none; }
+a:hover { cursor: pointer; }
+input, textarea { outline: 0; border: 0; padding: 0; width: 99%; }
+textarea { width: 100%; }
+img { border: 0; -webkit-user-drag: none; }
+table { border-collapse: collapse; border-spacing:0; width: 100%; }
+header,nav,article,section,footer { display: block; }
+
+/* 전체 랩 ===================================*/
+html {
+height: 100%;
+}
+
+body {
+height: 100%;
+font-family: Arial,sans-serif;
+font-size: 14px;
+line-height: 18px;
+background-color: #3A92C8;
+background: radial-gradient(circle,#94D2F8,#3A92C8);
+overflow-y: scroll;
+position: relative;
+}
+
+#section {
+height: 100%;
+}
+
+
+
+/* 상단 바 ===================================*/
+#top {
+height: 47px;
+background: transparent;
+position: fixed;
+top: 0;
+right: 0;
+left: 0;
+z-index: 999;
+}
+
+#top div.dep1 {
+background: #fff;
+border-bottom: 1px solid #3A92C8;
+}
+
+#top div.dep2 {
+height: 46px;
+min-width: 590px;
+max-width: 1190px;
+margin: 0 auto;
+position: relative;
+}
+
+#top .left a {
+position: absolute;
+left: 30px;
+top: 14px;
+}
+
+
+#top .right {
+float: right;
+padding: 16px 30px 16px 0;
+line-height: 1;
+font-size: 13px;
+color: #66757F;
+}
+
+#top .right span {
+font-size: 12px;
+}
+
+#top .right b {
+vertical-align: middle;
+display: inline-block;
+margin-left: 2px;
+border-top: 4px solid #777;
+border-left: 4px solid transparent;
+border-right: 4px solid transparent;
+}
+
+
+
+/* 중단 포지션 =================================== */
+#main {
+height: 100%;
+}
+
+#main .dep1 {
+max-height: 750px;
+min-height: 545px;
+position: absolute;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+}
+
+#main .contents {
+height: 328px;
+margin: -154px 0 0 -418px;
+top: 50%;
+width: 838px;
+left: 50%;
+position: absolute;
+}
+
+
+
+/* 중단 좌측 =================================== */
+
+#welcome {
+background: white;
+padding: 24px;
+height: 279px;
+width: 475px;
+border: 1px solid #6fa3c4;
+border-radius: 4px;
+box-shadow: 0 0 125px rgba(255,255,255,.35);
+
+}
+
+#phone {
+background-image: url(img/phone.png);
+width: 222px;
+height: 285px;
+position: absolute;
+top: -22px;
+left: 290px;
+}
+
+#welcome .text {
+margin-top: 50px;
+width: 260px;
+color: #292f33;
+} 
+
+#welcome .text h1 {
+margin-bottom: 10px;
+font-size: 21px;
+font-weight: bold;
+line-height: .8;
+} 
+
+#welcome .text p {
+color: #999;
+}
+
+
+#welcome .store {
+position: absolute;
+top: 266px;
+}
+
+#welcome .store a {
+background-image: url(img/phone.png);
+padding: 10px;
+overflow: hidden;
+display: block;
+text-indent: -9999em;
+float: left;
+margin-right: 8px;
+margin-bottom: 15px;
+}
+
+#appstore {
+background-position: 0 78px;
+width: 115px;
+height: 19px;
+}
+
+#andoroid {
+background-position: 0 39px;
+width: 92px;
+height: 19px;
+}
+
+#device {
+position: absolute;
+left: 290px;
+bottom: 20px;
+font-size: 12px;
+}
+
+#device {
+color: #0084b4;
+}
+
+
+
+/* 중단 우측 =================================== */
+#main input {
+height: 20px;
+width: 266px;
+padding: 4px;
+border: 1px solid #ccc;
+border-radius: 3px;
+color: #333;
+
+}
+
+#signin {
+left: 536px;
+background: white;
+border: 1px solid #6fa3c4;
+border-bottom: 1px solid #ccc;
+border-left: 1px solid #eee;
+border-right: 1px solid #eee;
+border-radius: 4px;
+height: 108px;
+position: absolute;
+top: 0;
+width: 300px;
+}
+
+
+
+#signin form {
+margin: 12px;
+}
+#signin .pass {
+margin-top: 6px;
+}
+
+#signin .pass input {
+width: 178px;
+
+}
+
+#signin .pass button {
+line-height: 11px;
+font-size: 14px;
+font-weight: bold;
+height: 30px;
+padding: 8px 16px;
+background-color: #55acee;
+border: 1px solid #3b88c3;
+border-radius: 4px;
+color: #fff;
+
+position: relative;
+top: -1px;
+right: -3px;
+
+/* 
+box-shadow: 0 1px 0 #fff;
+background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.15));
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#00000000, endColorstr=#26000000)";
+float: right;
+width: auto;
+white-space: nowrap;
+display: inline-block;
+ */
+}
+
+#signin .pass button:hover {
+background-color: #0271bf;
+background-image: linear-gradient(#2daddc,#0271bf);
+border-color: #096eb3;
+cursor: pointer;
+}
+
+
+#forget {
+width: 276px;
+margin: 0;
+position: absolute;
+top: 82px;
+left: 12px;
+}
+
+#forget label {
+line-height: 20px;
+color: #999;
+display: inline;
+margin: 0;
+text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+text-align: left;
+}
+
+#forget label input {
+vertical-align: baseline;
+height: 13px;
+margin: 0;
+width: auto;
+display: inline-block;
+}
+
+#forget label span {
+line-height: 20px;
+font-size: 12px;
+cursor: pointer;
+}
+
+#forget .dot {
+color: #999;
+font-weight: bold;
+margin: 0 1px 0 2px;
+}
+
+#forget a{
+color: #0084b4;
+font-size: 12px;
+}
+
+
+#signup {
+border: 1px solid #6fa3c4;
+background: #fff;
+box-shadow: none;
+border-bottom: 1px solid #ccc;
+border-left: 1px solid #eee;
+border-right: 1px solid #eee;
+border-radius: 4px;
+height: 206px;
+left: 536px;
+position: absolute;
+top: 121px;
+width: 300px;
+}
+
+#signup h2 {
+border-bottom: 1px solid #e2e2e2;
+box-shadow: 0 1px 0 #fff;
+font-size: 16px;
+margin-bottom: 12px;
+padding: 10px 12px;
+color: #777;
+line-height: 22px;
+}
+
+#signup h2 span {
+color: #333;
+}
+
+#signup form {
+padding: 0;
+border-radius: 5px;
+}
+
+#signup form div {
+}
+
+#signup form input {
+display: block;
+height: 30px;
+margin: 6px auto;
+width: 266px;
+height: 20px;
+}
+
+#signup form a {
+line-height: 11px;
+bottom: 12px;
+height: 30px;
+position: absolute;
+right: 12px;
+color: #292f33;
+
+border: 1px solid #f1a02a;
+font-size: 14px;
+padding: 8px 12px;
+font-weight: bold;
+cursor: pointer;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+#signup form a:hover {
+text-decoration: none;
+background-image: linear-gradient(#fff,#f5f8fa);
+}
+
+
+
+
+/* 하단 리스트 =================================== */
+#footer {
+text-shadow: 0 1px 1px rgba(0,0,0,.2);
+color: rgba(255,255,255,0.25);
+bottom: 30px;
+color: #fff;
+font-size: 11px;
+position: absolute;
+text-align: center;
+width: 100%;
+}
+
+#footer li {
+display: inline;
+margin: 0 3px;
+cursor: pointer;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>j032</title>
+<style>
+section { margin: 100px 100px;}
+#form_div { position: relative;}
+form {  
+display: inline-block;
+position: absolute; top: -25px; left: 75px; 
+}
+input[type=submit] { 
+position: absolute; top: 0px; right: -50px;
+}
+#naver { 
+visibility:hidden;
+}
+</style>
+
+</head>
+<body>
+<section>
+
+<select id="select">
+<option value="daum">다음</option>
+<option value="naver">네이버</option>
+</select>
+
+  <div id="form_div">
+    <form id="daum" action="http://search.daum.net/search">
+      <input id="input_check" type="text" name="q" value=""><br>
+      <input type="submit" value="검색" onclick="inputClick()">
+    </form>
+ 
+    <form id="naver" action="http://search.naver.com/search.naver">
+      <input id="input_checkN" type="text" name="query" value=""><br>
+      <input type="submit" value="검색" onclick="inputClickN()">
+    </form>
+  </div>
+
+<script>
+var se = document.getElementById("select");
+var option = document.getElementsByTagName('option');
+var daum = document.getElementById('daum');
+var naver = document.getElementById('naver');
+
+// ===== 변경시 동작
+se.onchange = function() {
+	
+	var y = se.selectedIndex;
+	var x = se.options;
+	 // ===== select option 확인 후 분기
+ 	switch (x[y].index) {
+	  case 0:
+	    console.log("다음 검색");
+	    daum.style.visibility = "visible";
+	    naver.style.visibility = "hidden";
+	    break;
+	  case 1:
+	    console.log("네이버 선택");
+	    naver.style.visibility = "visible";
+	    daum.style.visibility = "hidden";
+	    break;
+	  };
+}
+
+// ===== 검색 공백 방지, 개선 필요함
+var check = document.getElementById('input_check');
+var checkN = document.getElementById('input_checkN');
+function inputClick() {
+	if ((check.value == '') || (check.value == null)) {
+		document.getElementById('daum').onsubmit = function () {
+			return false;
+			}
+  }
+	else {
+    document.getElementById('daum').onsubmit = function () {
+        return true;
+        }
+	}
+}
+
+var checkN = document.getElementById('input_checkN');
+function inputClickN() {
+  if ((checkN.value == '') || (checkN.value == null)) {
+    document.getElementById('naver').onsubmit = function () {
+      return false;
+      }
+  }
+  else {
+    document.getElementById('naver').onsubmit = function () {
+        return true;
+        }
+  }
+}
+
+</script>
+
+</section>
+</body>
+</html>

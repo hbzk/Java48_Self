@@ -1,0 +1,29 @@
+
+
+body {
+  font-family:   "Times New Roman", Consolas, Arial, sans-serif;
+}
+
+h1, h2 {
+  color:         gray;
+}
+
+h1 {
+  border-bottom: 1px solid #ff3498;
+}
+
+p {
+  color:         maroon;
+}
+
+p.greentea {
+  color:         green;
+}
+
+p.raspberry {
+  color:         blue;
+}
+
+p.blueberry {
+  color:         purple;
+}

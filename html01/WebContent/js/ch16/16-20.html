@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 이벤트를 연결합니다.
+            $('h1').click(function (event, data1, data2) {
+                alert(data1 + ' : ' + data2);
+            });
+
+            // 이벤트를 강제로 발생시킵니다.
+            $('h1').eq(1).trigger('click', [273, 52]); 
+            // 리스너에게 값을 전달할 때는 [...](배열)로만 전달할 수 있다.
+            // 받을때는 파라미터로.
+            
+        });
+    </script>
+</head>
+<body>
+    <h1>Start: </h1>
+    <h1>Start: </h1>
+</body>
+</html>

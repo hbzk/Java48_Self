@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fb-feeds>
+  <wirter>
+    <write_name></write_name>
+    <wirte_icon></wirte_icon>
+  </wirter>
+  
+  <contents>
+    <title></title>
+    <text></text>
+    <time></time>
+    <attach>
+      <photo></photo>
+      <video></video>
+    </attach>
+  </contents>
+
+  <limit>
+    <limit_level></limit_level>
+    <block_user></block_user>
+  </limit>
+
+  <share></share>
+
+  <like>
+    <like_user></like_user>
+  </like>
+
+  <reply>
+    <replyer>
+      <reply_name></reply_name>
+      <reply_icon></reply_icon>
+    </replyer>
+    
+    <reply_text>
+      <reply_target></reply_target>
+    </reply_text>
+    
+    <reply_time></reply_time>
+    <reply_like></reply_like>
+    <reply_like_user></reply_like_user>
+    
+    <re_reply>
+      <replyer>
+        <reply_name></reply_name>
+        <reply_icon></reply_icon>
+      </replyer>
+    
+      <reply_text>
+        <reply_target></reply_target>
+      </reply_text>
+    
+      <reply_time></reply_time>
+      <reply_like></reply_like>
+      <reply_like_user></reply_like_user>
+    </re_reply>
+    
+  </reply>
+
+
+</fb-feeds>

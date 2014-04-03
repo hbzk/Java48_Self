@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>j009</title>
+</head>
+<body>
+<h1>내장 함수 (inner function)</h1>
+<script>
+"use strict";
+
+// 함수는 함수 안에서 정의 될 수 있다.
+// * 내장 함수를 사용하는 이유 ->
+// 1) 외부 공개를 제한 -> 함수 외부에서 정말 필요할 때 해당 내부 함수 이름을 쓸 수 있게 한다. 
+// 2) 외부에서 변경 불가! -> 보안 장치
+
+function calc(a, b, op) {
+	switch(op) {
+	
+	case '+' :
+		return plus(a, b);
+	case '-' :
+		return minus(a, b);
+		default:
+		throw '오호라.. 해당 연산자 없어!'; // 예외 발생 명령어 throw
+		
+	}
+	
+	function plus (v1, v2) {
+		return v1 + v2;
+	}
+		function minus(v1, v2) {
+		return a - b;
+	}
+}
+
+console.log(calc(10, 20, '+'));
+// console.log(plus(10,20));  // Error (함수 내부에 선언된 함수는 외부에서 사용할 수 없다.)
+
+/* 
+var fir = Number(prompt('첫 숫자'));
+var sec = Number(prompt('둘 숫자'));
+var pl = prompt('기호');
+
+console.log(fir);
+console.log(sec);
+console.log(pl);
+alert('결과 : ' +  calc(fir, sec, pl));
+
+ */
+
+
+//내장 함수의 다른 용도 : 공장역할! "Factory Method" Pattern 
+function runFactory(level) { // run() 함수를 만드는 역할
+	switch(level) {
+	case 2: return run2;
+	case 3: return run3;
+  default: return run1;
+	}
+	
+  function run1() {
+	  console.log('걷는다.');
+  }
+  
+  function run2() {
+	    console.log('뛴다.');
+	  }
+	
+  function run3() {
+	  console.log('난다... 휘리릭....');
+  }
+}
+
+var level = prompt("달리기 레벨?", "1");
+var run = runFactory(Number(level));
+
+run(); //1. 달린다, 2. 뛴다. 3. 난다
+	  
+
+// * 함수를 파라미터로 받기
+function plus2(a, b) {
+	return a + b;
+}
+
+function minus2(a, b) {
+  return (a - b);
+}
+
+function clac2(f, a, b) {
+console.log(f(a, b));
+}
+
+console.log('----- -----파라미터를 함수로 받아서 호출하기 ----- -----');
+clac2(plus2, 10, 20);
+clac2(minus2, 10, 20);
+
+// 문제 : 반복문을 사용하지 않고 배열 다루기.
+function myEach(arr, f) {
+	for (var i in arr) {
+		f(i, arr[i]);
+	}
+}
+
+var names = ['홍길동', '임꺽정', '장길산', '장보고', '유덕화', '주윤발'];
+// 예전 방식
+console.log('----- ----- 배열 처리 예전 방식 ----- -----');
+for (var i in names) {
+	console.log(names[i]);
+}
+
+// myEach를 사용한 현대식 방식
+var fx = function(index, item) {
+	console.log(item);
+};
+
+console.log('----- ----- myEach()를 사용한 방식 ----- -----');
+myEach(names, fx);
+
+
+// ===== 실무에서 많이 쓰이는 반복 방식!!! =====
+console.log('----- ----- myEach() + function() {} 을 사용한 방식 ----- -----');
+myEach(names, function(index, item) {
+	console.log(item);
+})
+// ===== 다른곳에서 재사용되지 않는 경우 유용!!! 
+// ===== 익명 함수 -> 보안성
+
+</script>
+</body>
+</html>
+	

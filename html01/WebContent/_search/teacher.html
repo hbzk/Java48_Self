@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script>
+window.onload = function() {
+	document.getElementById('searchSite').onchange = function() {
+		  console.log(this.value);
+		  if (this.value == "naver") {
+			  document.getElementById('daumForm').style.display="none";
+			  document.getElementById('naverForm').style.display="inline";
+		  }
+		  else {
+        document.getElementById('daumForm').style.display="inline";
+        document.getElementById('naverForm').style.display="none";
+		  }
+		}
+}
+
+</script>
+</head>
+<body>
+<select id="searchSite">
+  <option value="daum">다음</option>
+  <option value="naver">네이버</option>
+</select>
+    <form id="daumForm" action="http://search.daum.net/search"
+    style="display: inline;">
+        <input type="hidden" name="w" id="tot" />
+        <input type="hidden" name="DA" id="YZRR" />
+        <input type="hidden" name="t__nil_searchbox" id="btn" />
+        <input type="hidden" name="sug" id="" />
+        <input type="hidden" name="sq" id="" />
+        <input type="hidden" name="o" id="" />
+        <input type="text" name="q" id="" />
+        <input type="submit" value="다음검색" />
+    </form>
+
+    <form id="naverForm" action="http://search.naver.com/search.naver"
+    style="display: none;">
+        <input type="hidden" name="where" id="nexearch" />
+        <input type="hidden" name="sm" id="top_hty" />
+        <input type="hidden" name="fbm" id="0" />
+        <input type="hidden" name="ie" id="utf8" />
+        <input type="text" name="query" id="" />
+        <input type="submit" value="네이버검색" />
+    </form>
+
+</body>
+</html>

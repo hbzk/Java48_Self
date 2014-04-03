@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>j033_</title>
+<style>
+div, h1 {
+border: 1px solid red;
+padding: 20px;
+margin: 5px;
+}
+</style>
+
+<script>
+"use strict";
+
+window.onload = function() {
+	var xhr = new XHLHttpRequest();
+	xhr.open('GET', 'j033_form.html', false);
+	xhr.send();
+	var content = document.getElementById('content');
+	content.innerHTML = xhr.responseText;
+};
+
+window.onload = function() {
+	  var xhr = new XMLHttpRequest();
+	  xhr.open('GET', 'j033_form.html', false);
+	  xhr.send();
+	  var content = document.getElementById('content');
+	  content.innerHTML = xhr.responseText;
+	};
+
+	
+</script>
+
+</head>
+<body>
+<h1>AJAX: Asynchronus Javascript And XML</h1>
+<div id="content">
+  
+</div>
+
+</body>
+</html>
+

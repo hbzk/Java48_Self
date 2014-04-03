@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>j032</title>
+<style>
+
+section { margin: 50px 30px;}
+
+#form_div { position: relative;}
+form { 
+display: inline-block;
+position: absolute; top: -25px; left: 75px; 
+}
+
+input[type=submit] { 
+position: absolute; top: 0px; right: -50px;
+}
+
+#daum { 
+z-index: -9; 
+}
+#naver { 
+z-index: -99; 
+}
+
+</style>
+</head>
+<body>
+<section>
+
+<select id="select">
+<option value="daum" selected="selected">다음</option>
+<option value="naver">네이버</option>
+</select>
+
+  <div id="form_div">
+  <!-- <form id="form" action="http://search.daum.net/search" target="_blank"> -->
+  <form name="form" id="form" >
+    <input id="input_text" type="text" name="q" value=""><br>
+    <input name="submit" id="submit" type="submit" value="검색">
+  </form>
+
+
+<!-- 
+  <form id="daum" action="http://search.daum.net/search" target="_blank">
+    <input class="input_check" type="text" name="q" value="다음"><br>
+    <input type="submit" value="검색">
+  </form>
+ 
+  <form id="naver" action="http://search.naver.com/search.naver" target="_blank">
+    <input class="input_check" type="text" name="query" value="네이버"><br>
+    <input type="submit" value="검색">
+  </form>
+ -->
+  </div>
+
+ 
+ <script>
+//기본 서브밋 막기
+ document.getElementById('form').onsubmit = function () {
+    return false;
+ };
+
+
+// ===== select option 확인
+/* function sub(){ */
+var option = document.getElementsByTagName('option');
+
+var se = document.getElementById("select");
+var se_value = se.options.selectedIndex;
+/* console.log(se_value); */
+
+
+
+
+// 폼 수정용 변수
+var div = document.getElementById('form_div');
+var form = document.getElementById('form');
+var form_action = form.getAttribute("action"); 
+
+var input_text = document.getElementById("input_text");
+var input_text_name = input_text.getAttribute("name");
+
+var submit = document.getElementById("submit");
+console.log(submit);
+
+
+
+
+
+switch (se_value) {
+	case 0:
+		
+		/* console.log("다음 검색"); */
+		form_action = "http://search.daum.net/search";
+		input_text_name = "q";
+		console.log(form);
+		// 서브밋 날리기
+		submit.click();
+
+		break;
+	case 1:
+	  /* console.log("네이버 선택"); */
+	  form_action = "http://search.naver.com/search.naver";
+    input_text_name = "query";
+	  
+	  break;
+	};
+
+
+
+ 
+
+
+</script>
+
+</section>
+</body>
+</html>

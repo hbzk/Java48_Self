@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>클릭게임</title>
+<link rel="stylesheet" href="card.css" type="text/css">
+</head>
+<body>
+<div id="h1"><h1>짝 맞추기</h1></div>
+<table>
+  <tr>
+    <td class="p1"><div id="c1" class="btn">1</div></td>
+    <td class="p2"><div id="c2" class="btn">2</div></td>
+    <td class="p3"><div id="c3" class="btn">3</div></td>
+    <td class="p4"><div id="c4" class="btn">4</div></td>
+    <td class="p5"><div id="c5" class="btn">5</div></td>
+    <td class="p6"><div id="c6" class="btn">6</div></td>
+  </tr>
+  <tr>
+    <td class="p7"><div id="c7" class="btn">7</div></td>
+    <td class="p8"><div id="c8" class="btn">8</div></td>
+    <td class="p9"><div id="c9" class="btn">9</div></td>
+    <td class="p10"><div id="c10" class="btn">10</div></td>
+    <td class="p11"><div id="c11" class="btn">11</div></td>
+    <td class="p12"><div id="c12" class="btn">12</div></td>
+  </tr>
+  <tr>
+    <td class="p8"><div id="c20" class="btn">8</div></td>
+    <td class="p9"><div id="c21" class="btn">9</div></td>
+    <td class="p4"><div id="c16" class="btn">4</div></td>
+    <td class="p5"><div id="c17" class="btn">5</div></td>
+    <td class="p6"><div id="c18" class="btn">6</div></td>
+    <td class="p2"><div id="c14" class="btn">2</div></td>
+  </tr>
+  <tr>
+    <td class="p7"><div id="c19" class="btn">7</div></td>
+    <td class="p10"><div id="c22" class="btn">10</div></td>
+    <td class="p11"><div id="c23" class="btn">11</div></td>
+    <td class="p1"><div id="c13" class="btn">1</div></td>
+
+    <td class="p3"><div id="c15" class="btn">3</div></td>
+    <td class="p12"><div id="c24" class="btn">12</div></td>
+  </tr>
+</table>
+  
+<script>
+"use strict";
+
+//======================================
+var divList = document.getElementsByTagName('div');
+var clicked = ""
+var clicked_odd = ""
+var clicked_id = ''
+
+var click_count = 0;
+var pair = 0;
+
+// ===== 클릭 동작
+// - 칸 클릭시  해당 칸에 그림을  0.5초 동안 보여준다
+for (var i = 0; i < divList.length; i ++) {
+
+  divList[i].addEventListener('click', function() {
+    this.setAttribute('style', 'background: transparent');
+    clicked = this;
+    setTimeout(function() {
+        clicked.setAttribute('style', 'background-color: #eee;');
+      }, 500);
+
+    
+    
+ 
+    
+// - 클릭 수 누적 저장
+    click_count ++ ;
+
+// 홀수 클릭시 동작
+     if (click_count % 2 == 1) {
+    	  //  id와 div정보를 저장
+    	  clicked_odd = this;
+     	  clicked_id = this.getAttribute("id");
+
+     	  // 카드 짝 번호 저장
+    	 pair =  this.innerHTML;
+    	
+    	  document.body.add
+        
+        // +++++++++++++++ 짝 체크를 초기화 한다.
+    } 
+    
+    else {
+// 동일카드 연속 클릭 방지
+        
+        if (pair == this.innerHTML && clicked_id !== this.getAttribute("id")) {
+            /* alert('맞췄다'); */
+            clicked.setAttribute('style', 'background: transparent');
+            clicked.setAttribute('class', 'opened btn');
+            // 홀수 클릭 div 오픈
+            clicked_odd.setAttribute('style', 'background: transparent');
+            clicked_odd.setAttribute('class', 'opened btn');
+            
+            pair = 0;
+          }
+        
+    }
+
+  });
+}
+
+ 
+
+
+ 
+ </script>
+
+</body>
+</html>
+

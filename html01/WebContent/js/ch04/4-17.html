@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        // 변수를 선언합니다.
+        var output = '';
+
+        // 반복문
+        for (var i = 0; i < 15; i++) {      // i를 1씩 증가시키며 15번 반복
+            for (var j = 15; j > i; j--) {    // j를 1씩 감소시키며 i보다 클 동안 반복
+                output += ' ';                    // 빈칸 출력
+            }
+         // k를 0부터 1씩 증가시키며, i의 2배 보다 작을 동안 
+            for (var k = 0; k < 2 * i - 1; k++) {               	
+                output += '=';                     // * 출력
+            }
+            output += '\n';                       // 다음줄로
+        }
+
+        // 출력합니다.
+        alert(output);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
