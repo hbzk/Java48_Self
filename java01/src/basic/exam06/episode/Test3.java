@@ -6,7 +6,8 @@ public class Test3 {
 	public static void testAdd() {
 		coll.add("홍길동");
 		coll.add("임꺽정");
-		coll.insert(0, "장길산");
+		coll.add("장보고");
+		coll.insert(1, "장길산");
 	}
 	
 	public static void testList() {

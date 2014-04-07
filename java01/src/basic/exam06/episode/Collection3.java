@@ -1,6 +1,5 @@
 package basic.exam06.episode;
 
-
 // > LinkedList<E> 직접 구현 
 public class Collection3 {
 	class Box {
@@ -9,7 +8,6 @@ public class Collection3 {
 	}
 	
 	int length; 	// > 갯수
-	
 	Box start;	 		// > 시작 상자
 	Box end; 			// > 끝 상자
 	
@@ -28,18 +26,14 @@ public class Collection3 {
 	public Object get(int index) {
 		if (index >= 0 && index < length) {
 			Box cursor = start;
-			int pos = 0;
-			do {
-				if (index == pos) {
-					return cursor.value;
-				}	else {
-					cursor = cursor.next;
-				}
-				pos++;
-			}	while (cursor != null); 	// > if (cursor.next == null) {	break;}
+			for (int pos = 0; pos < length; pos++) {
+				if (pos == index) 
+					break;
+				cursor = cursor.next;
+			}
 			return cursor.value;
-		}	else {
-			throw new RuntimeException("유효하지 않은 인덱스입니다.");
+		} else {
+			throw new RuntimeException("무효한 인덱스입니다.");
 		}
 	}
 	
@@ -48,9 +42,30 @@ public class Collection3 {
 	}
 	
 	public void insert(int index, Object value) {
-		if (index >= 0 && index < length) {
+		if (index == 0) {
+			Box next = start;
+			start = new Box();
+			start.value = value;
+			start.next = next;
 			
+		} else if (index > 0 && index < length) { 	// > 인덱스 유효성 검증
+			Box cursor = start; 																			// > cursor를 첫 박스에 위치
+			for(int pos = 1; pos < index; pos++) { 		// > 1부터 > insert할 인덱스 보다 작을동안 > 반복
+				cursor = cursor.next; 																// > 다음값으로 커서를 이동
+			} 	 																																// > ==> cursor를, "insert할 위치 바로 전" 까지 이동 시키는 for 문 완료
+			
+			Box temp = new Box(); 															// > 삽입 할 새 박스 생성
+			temp.value = value; 																	// > 새 박스에 삽입 할 값(주소) 넣고
+			
+			temp.next = cursor.next;														// > cursor(insert할 위치 바로 전)의 next를, 새 박스 next 주소로 연결
+																																					//==> 새 박스 'next' 주소 연결
+			cursor.next = temp; 																		// > (insert할 위치 바로 전)의 next를 새 박스로 연결		
+																																					//==> 새 박스 '이전' 주소 연결
+			
+		} else {
+			throw new RuntimeException("인덱스가 무효합니다.");
 		}
+		length++;
 	}
 }
 
