@@ -1,7 +1,7 @@
-package basic.exam06.episode;
+package basic.exam06.episode.up3;
 
-public class Test3 {
-	static Collection3 coll = new Collection3();
+public class Test1 {
+	static AbstractCollection coll; 	// > 상위 클래스의 변수로 생성시, 어떤 자손의 주소라도 담을 수 있다. 
 	
 	public static void testAdd() {
 		coll.add("홍길동");
@@ -17,6 +17,8 @@ public class Test3 {
 	}
 	
 	public static void main(String[] args) {
+		coll = new Collection4();
+		
 		try {
 			testAdd();
 		}	catch (Exception e) {
@@ -29,6 +31,6 @@ public class Test3 {
 			System.out.println(e.getMessage());
 		}
 		
-		System.out.println("get(1) : " + coll.get(1));
+		// System.out.println("get(1) : " + coll.get(1));
 	}
 }

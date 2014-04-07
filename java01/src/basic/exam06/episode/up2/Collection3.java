@@ -1,13 +1,11 @@
-package basic.exam06.episode;
+package basic.exam06.episode.up2;
 
-// > LinkedList<E> 직접 구현 
-public class Collection3 {
+public class Collection3 extends AbstractCollection {
 	class Box {
 		Object value;
 		Box next;
 	}
 	
-	int length; 	// > List 갯수
 	Box start;	 		// > 시작 상자 (주소 저장용)
 	Box end; 			// > 끝 상자 (주소 저장용)
 	
@@ -16,6 +14,7 @@ public class Collection3 {
 		end = start; 	// > Box의 주소를 담고 있다.
 	}
 	
+	@Override
 	public void add(Object obj) {
 		end.value = obj; 		// > end Box의 value에 obj를 넣는다.
 		end.next = new Box(); 		// > 박스를 새로 만들고 next로 주소를 연결한다.
@@ -23,6 +22,7 @@ public class Collection3 {
 		length++;
 	}
 	
+	@Override
 	public Object get(int index) {
 		if (index >= 0 && index < length) {
 			Box cursor = start;
@@ -35,10 +35,7 @@ public class Collection3 {
 		}
 	}
 	
-	public int size() {
-		return length; 	// > ++ 된 상태이므로 갯수로 활용 가능
-	}
-	
+	@Override
 	public void insert(int index, Object value) {
 		if (index == 0) {
 			Box next = start;
