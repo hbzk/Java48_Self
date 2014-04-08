@@ -2,8 +2,10 @@ package basic.exam06.jdbc.up1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 /* delete 요청
  * - executeDelete() 사용
@@ -17,13 +19,17 @@ public class DeleteTest {
 		
 		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.200.45:3306/studydb", "study", "study");
 		
-		Statement stmt = con.createStatement();
+		PreparedStatement stmt = con.prepareStatement("delete from SE_SUBJS where SNO=?");
 		
-		/* update SE_SUBJS set TITLE='Java Basic' where SNO=1 */
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("삭제할 번호 입력 : ");
+		stmt.setInt(1, Integer.parseInt(scanner.nextLine()));
 		
-		stmt.executeUpdate("delete from SE_SUBJS where SNO=6");
+		stmt.executeUpdate();
 		
 		System.out.println("삭제 성공!");
+		
+		scanner.close();
 		
 		stmt.close();
 		con.close();

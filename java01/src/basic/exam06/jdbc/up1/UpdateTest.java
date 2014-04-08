@@ -2,14 +2,11 @@ package basic.exam06.jdbc.up1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Scanner;
 
-/* update 요청
- * - executeUpdate() 사용
- * 
- * update sql
- * - update 테이블명 set 컬럼명 = 값, 컬럼명 = 값, .. where 조건
+/* 
  */
 public class UpdateTest {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
@@ -17,15 +14,22 @@ public class UpdateTest {
 		
 		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.200.45:3306/studydb", "study", "study");
 		
-		Statement stmt = con.createStatement();
-		
 		/* update SE_SUBJS set TITLE='Java Basic' where SNO=1 */
+		PreparedStatement stmt = con.prepareStatement("update SE_SUBJS set " 
+				+ " TITLE=?"
+				+ " where SNO=?");
 		
-		stmt.executeUpdate("update SE_SUBJS set " 
-		+ " TITLE='Java update'"
-		+ " where SNO=2");
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("변경할 이름 입력: ");
+		stmt.setString(1, scanner.nextLine());
+		stmt.setInt(2, 1);
+		
+		stmt.executeUpdate();
+		
 		
 		System.out.println("변경 성공!");
+		
+		scanner.close();
 		
 		stmt.close();
 		con.close();
