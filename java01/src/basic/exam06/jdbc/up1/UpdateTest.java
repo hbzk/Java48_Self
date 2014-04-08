@@ -1,4 +1,4 @@
-package basic.exam06.jdbc;
+package basic.exam06.jdbc.up1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ import java.sql.Statement;
  * update sql
  * - update 테이블명 set 컬럼명 = 값, 컬럼명 = 값, .. where 조건
  */
-public class Test04 {
+public class UpdateTest {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		

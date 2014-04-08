@@ -50,14 +50,17 @@ public class CourseMgt {
 	
 	public static void main(String[] args) throws Exception {
 	  Class.forName("com.mysql.jdbc.Driver");
-	  con = DriverManager.getConnection("jdbc:mysql://192.168.200.45:3306/studydb", "study", "study");
+	  con = DriverManager.getConnection("jdbc:mysql://192.168.200.42:3306/studydb", "study", "study");
 	  stmt = con.createStatement();
-	  
 	  
 	  list();
 	  
-	  // insert("테스트", "홍길동", 00123);
-	  update(6, "hours", "00123");
+	  
+	  // insert("테스트123" + i, "홍길동", 00123);
+    
+  	
+	  // update(6, "hours", "00123");
+	  // delete(5);
 	  
 	  list();
 	  

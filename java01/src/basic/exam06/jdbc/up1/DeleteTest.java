@@ -1,17 +1,17 @@
-package basic.exam06.jdbc;
+package basic.exam06.jdbc.up1;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/* update 요청
- * - executeUpdate() 사용
+/* delete 요청
+ * - executeDelete() 사용
  * 
- * update sql
- * - update 테이블명 set 컬럼명 = 값, 컬럼명 = 값, .. where 조건
+ * delete sql
+ * - delete form 테이블명 where 조건
  */
-public class Test04 {
+public class DeleteTest {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
 		
@@ -21,11 +21,9 @@ public class Test04 {
 		
 		/* update SE_SUBJS set TITLE='Java Basic' where SNO=1 */
 		
-		stmt.executeUpdate("update SE_SUBJS set " 
-		+ " TITLE='Java update'"
-		+ " where SNO=2");
+		stmt.executeUpdate("delete from SE_SUBJS where SNO=6");
 		
-		System.out.println("변경 성공!");
+		System.out.println("삭제 성공!");
 		
 		stmt.close();
 		con.close();
