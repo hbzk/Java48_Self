@@ -15,6 +15,8 @@ public class Test01 {
 		//  	-> Driver는 Connection 객체를 리턴 -> DriverManager는 받은 것을 리턴.
 		Connection con = DriverManager.getConnection( 	// > Connection 인터페이스의 참조변수에 객체를 저장 -> 코드의 유연성
 				"jdbc:mysql://192.168.200.45:3306/studydb", 	// jdbc url
+				// > jdbc:mysql://192.168.200.45:3306/studydb?useUnicode=true&amp;characterEncoding=UTF-8" 한글 안될때
+				
 				"study", 	// user name
 				"study"); 	// password
 		

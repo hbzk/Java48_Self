@@ -21,7 +21,6 @@ import java.sql.Statement;
 public class Test02 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.jdbc.Driver");
-		
 		Connection con = DriverManager.getConnection("jdbc:mysql://192.168.200.45:3306/studydb", "study", "study");
 		
 		// Connection으로 부터 Statement 구현체를 얻는다.
@@ -29,8 +28,15 @@ public class Test02 {
 		
 		// DBMS에 질의하기
 		// 서버에 질의할 insert문
-		// insert SE_SUBJS(
-		stmt.executeUpdate("");
-		con.close();
+		
+		// insert SE_SUBJS(TITLE, DEST) value('Java기초', '자바 기초 문법 강의')
+		stmt.executeUpdate(
+				"insert SE_SUBJS(TITLE, DEST)"
+				+ " values('Java_고급', '자바 고고 급')");
+		
+		System.out.println("입력 성공!");
+		
+		stmt.close();
+		con.close(); 
 	}
 }
