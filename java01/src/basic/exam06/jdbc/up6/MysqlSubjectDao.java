@@ -1,30 +1,29 @@
-package basic.exam06.jdbc.up5;
+package basic.exam06.jdbc.up6;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-/* Connection을 작업들 사에어서 공유하기
- * - 인스턴스 변수로 저장한한다.
- * - 문제점 Dao당 Connection
- *  		Dao가 많을 경우 가끔 사용되는 Dao 커넥션 점유 => 낭비
- * - 치명적인 문제 (Critical Issue)
- *  		작업들이 커덱스을 공유 => 그 중 하나의 작업에서 오류 발생 =>
- *  		그 작업을 취소(rollback) => 그 작업이 사용하는 커넥션의, 다른 모든 작업들도 취소됨
+/* 1) DB 커넥션 풀 사용
+ * 2) DI(Dependency Injection) : 의존 객체를 외부에서 주입 받기
+ *  		- 의존 객체를 주입할 setXXX() 메서드를 준비한다.
+ *  		- setXXX : 셋터(setter)
  */
 public class MysqlSubjectDao implements SubjectDao {
-	Connection con = null;
-	public MysqlSubjectDao() throws Throwable {
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://192.168.200.45:3306/studydb", "study", "study");
+	DBConnectionPool dbConnectionPool;
+	
+	// 외부에서 DBConnectionPool 객체를 주입할 수 있도록 함
+	public void setDBConnectionPool(DBConnectionPool dbConnectionPool) {
+		this.dbConnectionPool = dbConnectionPool;
 	}
 	
 	public void insert(SubjectVo subject) throws Throwable {
+		Connection con = null; 	// > 컨넥션 변수 준비
 		PreparedStatement stmt = null;
 		try {
+			con = dbConnectionPool.getConnection(); 	// > 대여해서 사용
 			stmt = con.prepareStatement("insert SE_SUBJS(TITLE, DEST) value(?, ?)");
 			stmt.setString(1, subject.title);
 			stmt.setString(2, subject.description);
@@ -33,13 +32,16 @@ public class MysqlSubjectDao implements SubjectDao {
 			throw e;
 		}	finally {
 			try {stmt.close();}	catch (Throwable e2) {}
+			dbConnectionPool.returnConnection(con); 	// > 반납
 		}
 	}
 	
 	public List<SubjectVo> list(int pageNo, int pageSize) throws Throwable{
+		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
+			con = dbConnectionPool.getConnection();
 			stmt = con.prepareStatement("select SNO, TITLE from SE_SUBJS" +
 					" order by SNO desc" +
 					" limit ?, ?");
@@ -60,13 +62,16 @@ public class MysqlSubjectDao implements SubjectDao {
 		}	finally {
 			try {rs.close();}	catch (Throwable e2) {}
 			try {stmt.close();}	catch (Throwable e2) {}
+			dbConnectionPool.returnConnection(con);
 		}
 	}
 	
 	public SubjectVo detail(int no) throws Throwable {
+		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
+			con = dbConnectionPool.getConnection();
 			stmt = con.prepareStatement("select SNO, TITLE, DEST from SE_SUBJS" +
 					" where SNO=?");
 			stmt.setInt(1, no);
@@ -85,12 +90,15 @@ public class MysqlSubjectDao implements SubjectDao {
 		}	finally {
 			try {rs.close();}	catch (Throwable e2) {}
 			try {stmt.close();}	catch (Throwable e2) {}
+			dbConnectionPool.returnConnection(con);
 		}
 	}
 	
 	public void update(SubjectVo subject) throws Throwable {
+		Connection con = null;
 		PreparedStatement stmt = null;
 		try {
+			con = dbConnectionPool.getConnection();
 			stmt = con.prepareStatement("update SE_SUBJS set " 
 					+ " TITLE=?"
 					+ ", DEST=?"
@@ -103,13 +111,16 @@ public class MysqlSubjectDao implements SubjectDao {
 			throw e;
 		}	finally {
 			try {stmt.close();}	catch (Throwable e2) {}
+			dbConnectionPool.returnConnection(con);
 		}
 	}
 	
 	public void delete(int no) throws Throwable {
+		Connection con = null;
 		PreparedStatement stmt = null;
 		
 		try {
+			con = dbConnectionPool.getConnection();
 			stmt = con.prepareStatement("delete from SE_SUBJS where SNO=?");
 			stmt.setInt(1, no);
 			stmt.executeUpdate();
@@ -117,12 +128,10 @@ public class MysqlSubjectDao implements SubjectDao {
 			throw e;
 		}	finally {
 			try {stmt.close();}	catch (Throwable e2) {}
+			dbConnectionPool.returnConnection(con);
 		}
 	}
-	
-	public void clodse() {
-		try {con.close();} catch(Exception e) {}
-	}
+
 }
 
 
