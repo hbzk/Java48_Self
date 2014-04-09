@@ -6,8 +6,9 @@ package basic.exam06.jdbc.ex;
  * - 테이블 <-> VO
  * - 테이블A + 테이블B + ... <-> VO
  */
-public class SubjectVo {
+public class CourseVo {
 	int 			no; 											// DB 컬럼과 연결되지만, 컬렴명을 사용하지 말고, 일반 용어를 사용한다.
 	String 	title; 										// -> 그래야 다른 프로젝트에서 재사용할때 제약이 줄어든다.
 	String 	description;
+	int 	hours;
 }
