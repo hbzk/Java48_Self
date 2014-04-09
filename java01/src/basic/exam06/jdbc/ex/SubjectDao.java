@@ -1,4 +1,4 @@
-package basic.exam06.jdbc.up2;
+package basic.exam06.jdbc.ex;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
