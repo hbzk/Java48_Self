@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>주문화면</title>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+<body>
+<select name="menu">
+	<option value="rice" data_price="4000">밥</option>
+	<option value="udong" data_price="3000">우동</option>
+	<option value="ramen" data_price="2000">라면</option>
+</select>
+<input id="add" type="button" value="추가">
+
+<hr>
+<div>
+	<p>합계 : <span id="total_price"> ---- 원</span></p>
+</div>
+
+<div id="selected_menu">
+	<p>선택 목록</p>
+</div>
+
+
+
+<script type="text/javascript">
+var selected;
+var price = 0;
+var total = 0;
+var rice_count = 0;
+var udong_count = 0;
+var ramen_count = 0;
+
+function add_menu(count) {
+	if (count == 1) {
+		$("#selected_menu").append("<p id=" + selected + ">" + selected + " " + count + "개 : " + price + "원</p>");
+	}	else {
+		$("#" + selected + "").html(selected + " " + count + "개 : " + (price * count) + "원");
+	}
+}
+
+$("#add").click(function(event) {
+	event.preventDefault();
+	selected = $("select option:selected").text();
+	price = parseInt($("select option:selected").attr("data_price"));
+	total = parseInt(total) + price;
+	
+	$("#total_price").html(total + "원");
+	
+ 	if (selected == "밥") {
+ 		rice_count++;
+ 		add_menu(rice_count);
+	} else if (selected == "우동") {
+		udong_count++;
+		add_menu(udong_count);
+	} else if (selected == "라면") {
+		ramen_count++;
+		add_menu(ramen_count);
+	}
+	
+
+	
+	
+	// $("div").append(selected).append(price).append("<br>");
+});
+
+
+
+/* $( "select" )
+.change(function () {
+  var str = "";
+  $( "select option:selected" ).each(function() {
+    str += $( this ).text() + " ";
+  });
+  $( "div" ).text( str );
+})
+.change();
+ */
+</script>
+</body>
+</html>

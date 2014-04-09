@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>메인화면</title>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<style>
+* { margin: 0; padding: 0; list-style: none;}
+body { width: 100%;}
+table { 
+margin: 50px auto;
+border-spacing: 20px;
+}
+td {
+	border: 1px solid #ccc;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<table>
+	<tr>
+		<td id="td">1</td>
+		<td>2</td>
+		<td>3</td>
+	</tr>
+</table>
+
+<div id="target"></div>
+
+<script type="text/javascript">
+$("td").click(function(e) {
+	
+	
+
+	$.ajax({
+			url : "menu.html",
+		}).done(function(html) {
+			$("#target").append(html);
+		});
+
+});
+
+
+</script>
+</body>
+</html>

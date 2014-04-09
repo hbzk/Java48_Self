@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ㅁㅁㅁ</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<style>
+body {
+	width: 100%;
+	height: 100%;
+}
+#wrap {
+	width: 900px;
+
+	margin: 0px auto;
+	border: 1px solid #ddd;
+}
+
+
+section {
+	float: left;
+	display: block;
+	width: 300px;
+}
+
+</style>
+</head>
+<body>
+
+
+<div id="wrap">
+
+<section id="first">
+<form id="check_form">
+	<p><input type="checkbox" value="가">가</p>
+	<p><input type="checkbox" value="나">나</p>
+	<p><input type="checkbox" value="다">다</p>
+	<p><input type="checkbox" value="라">라</p>
+	<p><input type="checkbox" value="마">마</p>
+	<p><input type="checkbox" value="바">바</p>
+	<p><input type="checkbox" value="사">사</p>
+	<p><input type="checkbox" value="아">아</p>
+	<input type="button" id="btn" value="다음">
+</form>
+</section>
+
+
+<section id="second">
+<form id="selected">
+
+	<!-- <input type="button" id="btn" value="다음"> -->
+</form>
+</section>
+
+
+
+
+
+
+
+</div>
+
+<script>
+"use strict";
+var check = [];
+
+$("#btn").click(function() {
+	check = $("input:checked");
+  check.each(function(i){
+	  var c_input = $(this);
+	  $("#selected").append($("<p><input type='checkbox' value=" + c_input.val() +">" + c_input.val() + "<br></p>"));
+	  $(c_input).parent().remove();
+  });
+  
+  
+	// str += $(this).val() + ",";
+  // $("#selected").append($("<p>123</p>"));
+});
+
+
+
+</script>
+</body>
+</html>
