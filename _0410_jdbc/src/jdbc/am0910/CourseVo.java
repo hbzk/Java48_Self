@@ -1,8 +1,8 @@
-package _0410_jdbc.pm12;
+package jdbc.am0910;
 
 public class CourseVo {
 	int no;
 	String title;
 	String dest;
-	int hours;
+	int hours; 
 }

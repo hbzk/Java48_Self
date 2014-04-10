@@ -1,4 +1,4 @@
-package _0410_jdbc.am0910;
+package jdbc.am0910;
 
 
 public class CourseMgt {

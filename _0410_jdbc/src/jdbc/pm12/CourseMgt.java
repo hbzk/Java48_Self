@@ -1,4 +1,4 @@
-package _0410_jdbc.pm12;
+package jdbc.pm12;
 
 import java.util.ArrayList;
 import java.util.Scanner;
