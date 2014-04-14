@@ -35,7 +35,7 @@ public class TestServlet01 extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		// response.setContentType("text/html;charset=UTF-8"); 			// > 스트림을 얻고 난 뒤에는 적용되지 않는다.
 		out.println("<html><head><title>test01</title></head>");
-		out.println("<body><h1>test01-출력하기<h1></body></html>");
+		out.println("<body><h1>test01-출력하기</h1></body></html>");
 		
 		
 	}

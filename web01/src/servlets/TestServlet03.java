@@ -9,32 +9,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/* 애노테이션으로 서블릿 등록하기
+/* 입력 파라미터 값 꺼내기
+ * - GET =>
+ *  		GET URL?파라미터명=값&파라미터명=값 HTTP/1.1
+ *  		...(헤더정보)
+ *  		(엔터)
+ * - POST =>
+ *  		POST URL HTTP/1.1
+ *  		...(헤더정보)
+ *  		(엔터)
+ *  		파라미터명=값&파라미터명=값
+ *  
+ * - GET/POST 상관없이 값을 꺼낼 수 있다.
+ *  		=> getParameter
  * 
- * @WebServlet
- * - 서블릿을 선언 + URL 매핑
- * - value 속성: URL 매핑 정보
- *  	문법) value=String[]
- *  	사용법1) value={"url1", "url2"}
- *  	사용법2) value={"url1"}
- * 		사용법3) value="url1"
- * 
- * - value 속성만 값을 설정할 경우  ==> 속성 이름(value=) 생략해도 된다
  */
-//@WebServlet(value={"/test/test02.bit", "/test/test0202.bit"})
-//@WebServlet(value={"/test/test02.bit"})
-//@WebServlet(value="/test/test02.bit", displayName="Test02 Ok!")
-@WebServlet("/test/test02.bit")
+@WebServlet("/test/test03.bit")
 public class TestServlet03 extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
+		// 요청 정보에서 파라미터 값 꺼내기
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		
+		// 클라이언트에게 출력하기
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<html><head><title>test01</title></head>");
-		out.println("<body><h1>test02-애노테이션 사용<h1></body></html>");
+		out.println("<body><h1>test03-요청 파라미터 값 꺼내기</h1>");
+		out.println("과목명: " + title + "<br>");
+		out.println("내용: " + description + "<br>");
+		out.println("</body></html>");
 	}
 }
 
