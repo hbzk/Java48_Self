@@ -44,3 +44,4 @@ public class SubjectDeleteServlet extends HttpServlet {
 		out.println("</body></html>");
 	}
 }
+
