@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import vo.SubjectVo;
-import dao.MysqlSubjectDao;
-import util.DBConnectionPool;
+import dao.SubjectDao;
 
 @WebServlet("/subject/list.bit")
 @SuppressWarnings("serial")
@@ -27,9 +26,8 @@ public class SubjectListServlet extends HttpServlet {
 		try {
 			out.println("<h1>과목목록</h1>");
 			
-			DBConnectionPool dbConnectionPool = new DBConnectionPool();
-			MysqlSubjectDao dao = new MysqlSubjectDao();
-			dao.setDBConnectionPool(dbConnectionPool);
+			// > 현재 객체의 getServletContext() 하고 그 중에 .getAttribute("subjectDao") 를 한다.
+			SubjectDao dao = (SubjectDao) this.getServletContext().getAttribute("subjectDao");
 			
 			int pageNo = Integer.parseInt(request.getParameter("pageNo"));
 			int pageSize = Integer.parseInt(request.getParameter("pageSize"));

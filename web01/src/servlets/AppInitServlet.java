@@ -8,10 +8,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebServlet;
 
-import dao.MysqlSubjectDao;
 import util.DBConnectionPool;
+import dao.MysqlSubjectDao;
 
 /* 서블릿
  * - 생성 시점: 최초로 클라이언트가 요청했을 때
@@ -23,12 +22,14 @@ import util.DBConnectionPool;
  * - 다른 서블릿을 위해 리소스를 준비한다.
  * - URL 매핑하지 말 것!
  * 
- * >>> web.xml 에 서블릿 추가
+ * >>> web.xml 에 서블릿 추가 (보고 오시오)
  */
 
 @SuppressWarnings("serial")
 public class AppInitServlet extends GenericServlet {
 	DBConnectionPool dbConnectionPool;
+	
+	
 	public AppInitServlet() {
 		System.out.println("AppInitServlet 생성됨.");
 	}
@@ -37,7 +38,8 @@ public class AppInitServlet extends GenericServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// 기존의 메서드를 그대로 사용할 것이라면,
 		// 다음과 같이 오버라이딩 하기 전의 원래 메서드를 호출하라!
-	  super.init(config);	// super의 의미 ==> 오버라이딩 전의..
+	  super.init(config);	// super의 의미 ==> 	오버라이딩 전의 해야할 일은 먼저 수행
+	  																															//	이후 추가 동작 지정
 	  
 	  // 다른 서블릿을 위한 공통 자원을 준비
 	  dbConnectionPool = new DBConnectionPool();
