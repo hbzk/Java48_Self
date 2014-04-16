@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import vo.SubjectVo;
 import dao.SubjectDao;
 
+/* 과목명에 상세보기 링크 추가
+ * 
+ */
 @WebServlet("/subject/list.bit")
 @SuppressWarnings("serial")
 public class SubjectListServlet extends HttpServlet {
@@ -33,7 +36,7 @@ public class SubjectListServlet extends HttpServlet {
 			int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 			
 			List<SubjectVo> list = dao.list(pageNo, pageSize);
-			
+			out.println("<a href='form.html'>새과목</a><br>");			
 			out.println("<table border='1'>");
 			out.println("<tr>");
 			out.println("<th>번호</th>");
@@ -43,14 +46,18 @@ public class SubjectListServlet extends HttpServlet {
 			for (SubjectVo subject : list) {
 				out.println("<tr>");
 				out.println("<td>" + subject.getNo() + "</td>");
-				out.println("<td>" + subject.getTitle() + "</td>");
+				out.println("<td><a href='detail.bit?no="
+						+ subject.getNo()
+						+ "'>" + subject.getTitle() + "</a></td>");
 				out.println("</tr>");
 			}
+
 			out.println("</table>");
 		}	catch (Throwable e) {
 			out.println("오류 발생 했음!");
 			e.printStackTrace();
 		}
 		out.println("</body></html>");
+		
 	}
 }
