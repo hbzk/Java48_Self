@@ -1,9 +1,9 @@
 package servlets.subject;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import vo.SubjectVo;
 import dao.SubjectDao;
 
-/* 과목명에 상세보기 링크 추가
+/* View(JSP) 적용
+ * - 이 클래스가 하던 일 중에서 출력 부분
  * 
  */
 @WebServlet("/subject/list.bit")
@@ -22,42 +23,26 @@ public class SubjectListServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<html><head><title>과목목록</title></head><body>");
-		
 		try {
-			out.println("<h1>과목목록</h1>");
-			
-			// > 현재 객체의 getServletContext() 하고 그 중에 .getAttribute("subjectDao") 를 한다.
 			SubjectDao dao = (SubjectDao) this.getServletContext().getAttribute("subjectDao");
 			
 			int pageNo = Integer.parseInt(request.getParameter("pageNo"));
 			int pageSize = Integer.parseInt(request.getParameter("pageSize"));
 			
 			List<SubjectVo> list = dao.list(pageNo, pageSize);
-			out.println("<a href='form.html'>새과목</a><br>");			
-			out.println("<table border='1'>");
-			out.println("<tr>");
-			out.println("<th>번호</th>");
-			out.println("<th>과목명</th>");
-			out.println("</tr>");
 			
-			for (SubjectVo subject : list) {
-				out.println("<tr>");
-				out.println("<td>" + subject.getNo() + "</td>");
-				out.println("<td><a href='detail.bit?no="
-						+ subject.getNo()
-						+ "'>" + subject.getTitle() + "</a></td>");
-				out.println("</tr>");
-			}
-
-			out.println("</table>");
+			// ServletRequest 보관소에 Dao 리턴 결과를 보관한다. -> JSP가 사용할 수 있도록
+			request.setAttribute("list", list);
+			
+			// JSP에 실행을 위임하기 => RequestDispatcher를 get 한다.
+			// - 파라미터는 반드시 현재 컨텍스트(웹 애플리케이션 루트!!)를 기준으로 할 것
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/subject/list.jsp"); 	// > 대상 지정하며 Dispatcher 호출
+			rd.forward(request, response); 	// > 포워드/인클루드 선택 (request, response) 전달 
+			
+			
 		}	catch (Throwable e) {
-			out.println("오류 발생 했음!");
 			e.printStackTrace();
 		}
-		out.println("</body></html>");
-		
 	}
 }
