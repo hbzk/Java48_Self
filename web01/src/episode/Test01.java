@@ -3,7 +3,8 @@ package episode;
 
 public class Test01 {
 
-	public static void main(String[] args) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+  public static void main(String[] args) {
 		// Student에 설정된 @ClassInfo 애노테이션을 값 추출
 		
 		Student s = new Student();
