@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 
 <div style="text-align: center;">
-	<address>@2014, Bit Academy Java 48</address>
+	<address>@2014, Bit Academy ${studyClass}</address>
 </div>

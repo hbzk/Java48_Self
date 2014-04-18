@@ -1,3 +1,40 @@
+<%--
+EL 적용
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<h1>과목 상세정보(EL)</h1>
+<table border='1'>
+	<tr>
+		<th>번호</th>
+		<td>${subject.no}</td>
+	</tr>
+	<tr>
+		<th>과목명</th>
+		<td>${subject.title}</td>
+	</tr>
+	<tr>
+		<th>내용</th>
+		<td><textarea rows='5' cols='60' readonly>${subject.description}</textarea></td>
+	</tr>
+</table>
+<a href='list.bit?pageNo=1&pageSize=10'>목록</a>
+<a href='delete.bit?no=${subject.no}'>삭제</a>
+<a href='update.bit?no=${subject.no}'>변경</a>
+<br>
+<jsp:include page="/footer.jsp"/>
+</body>
+</html>
+
+
+
+<!-- ============================================= --> 
+ 
 <%-- 
 JSP 액션 태그
 -> JSP 에서만 사용하는 태그. 특정 자바 코드를 생성한다.
@@ -23,17 +60,9 @@ JSP 액션 태그
 
  --%>
  
-<%@page import="vo.SubjectVo"%>
+<%-- <%@page import="vo.SubjectVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:useBean id="subject" class="vo.SubjectVo" scope="request" />
-<%--
-SubjectVo subject = (SubjectVo) request.getAttribute("subject");
-if (subject == null) {
-	subject = new SubjectVo();
-	request.setAttribute("subject", subject);
-}
---%>
 
 <!DOCTYPE html>
 <html>
@@ -62,3 +91,4 @@ if (subject == null) {
 <jsp:include page="/footer.jsp"/>
 </body>
 </html>
+ --%>
