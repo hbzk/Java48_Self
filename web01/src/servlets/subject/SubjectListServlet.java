@@ -38,7 +38,7 @@ public class SubjectListServlet extends HttpServlet {
 			// - 파라미터는 반드시 현재 컨텍스트(웹 애플리케이션 루트!!)를 기준으로 할 것
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/subject/list.jsp"); 	// > 대상 지정하며 Dispatcher 호출
-			rd.forward(request, response); 	// > 포워드/인클루드 선택 (request, response) 전달 
+			rd.forward(request, response); 	// > 포워드/인클루드 중 선택 (request, response) 전달 
 			
 			
 		}	catch (Throwable e) {
