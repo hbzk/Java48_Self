@@ -32,7 +32,6 @@ public class AuthFilter implements Filter {
 			HttpSession session = httpRequest.getSession();
 			if (session.getAttribute("loginUser") == null) {
 				String contextRoot = httpRequest.getContextPath(); 	// ==> "/web01"을 리턴
-				System.out.println(contextRoot);
 				httpResponse.sendRedirect(contextRoot + "/auth/login.bit");
 				return;
 			}

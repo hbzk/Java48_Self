@@ -42,7 +42,8 @@ public class LoginServlet extends HttpServlet {
 					}
 				}
 			}
-*/			
+*/
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/auth/login.jsp");
 			rd.forward(request, response);
 		}	catch (Throwable e) {
