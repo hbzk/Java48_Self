@@ -11,9 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.SubjectDao;
-import dao.UserDao;
 import vo.UserVo;
+import dao.UserDao;
 
 /* 쿠키(Cookie)
  * - 클라이언트에 맡겨 놓는 정보
@@ -33,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 		try {
-			// 쿠기 정보 꺼내기
+			// 쿠키 정보 꺼내기
 /*			Cookie[] cookies = request.getCookies();
 			if (cookies != null) {
 				for (Cookie cookie : cookies) {
