@@ -4,8 +4,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import dao.MysqlSubjectDao;
 import util.DBConnectionPool;
+import dao.MysqlSubjectDao;
+import dao.MysqlUserDao;
 
 /* ServletContextListener
  * - 웹 애플리케이션의 시작/종료 이벤트 처리 
@@ -35,6 +36,10 @@ public class ContextLoaderListener implements ServletContextListener {
 		MysqlSubjectDao subjectDao = new MysqlSubjectDao();
 		subjectDao.setDBConnectionPool(dbConnectionPool);
 		sc.setAttribute("subjectDao", subjectDao);
+		
+		MysqlUserDao userDao = new MysqlUserDao();
+		userDao.setDBConnectionPool(dbConnectionPool);
+		sc.setAttribute("userDao", userDao);
 	}
 
 }

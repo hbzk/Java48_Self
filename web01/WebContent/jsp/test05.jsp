@@ -19,7 +19,13 @@ Directive element
     contentType="text/html"
     pageEncoding="UTF-8"%> --%>
 
+<%@ page language="java" 
+          contentType="text/html; charset=UTF-8" 
+          pageEncoding="UTF-8"%> 
+<%-- include는 지정된 파일의 내용을 그 자리에 붙임. --%>   
+<%@ include file="header.inc" %>
+<title>test05</title>
+</head>
 <body>
 <h1>Directive element</h1>
-</body>
-</html>
+<%@ include file="footer.inc" %>
