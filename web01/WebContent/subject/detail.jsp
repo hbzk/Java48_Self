@@ -7,6 +7,8 @@ EL 적용
 <html>
 <head>
 <meta charset="UTF-8">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 </head>
 <body>
 <jsp:include page="/header.jsp"/>

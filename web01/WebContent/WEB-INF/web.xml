@@ -46,10 +46,10 @@
   	<url-pattern>*.bit</url-pattern> 	<!-- '?' 전에 끝나는 URL -->
   </filter-mapping>
 
-  <filter-mapping>
+<!--   <filter-mapping>
   	<filter-name>AuthFilter</filter-name>
   	<url-pattern>*.bit</url-pattern>
-  </filter-mapping>
+  </filter-mapping> -->
   
   
   
