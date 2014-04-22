@@ -43,6 +43,10 @@ public class FileUploadServlet extends HttpServlet {
 					System.out.println(item.getString("UTF-8")); 				// 파라미터 값 출력
 					// JSP에 전달하기 위해 request에 보관한다.
 					request.setAttribute(item.getFieldName(), item.getString("UTF-8"));
+					request.setAttribute("file1", "병아리.jpg");
+					
+					// request {name=삐약이, age=2, file1=병아리.jpg}
+					
 					
 				}	else { 	// 파일 데이터
 					System.out.print(item.getFieldName());	// 파라미터 명 출력
