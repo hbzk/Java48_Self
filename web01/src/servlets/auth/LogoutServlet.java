@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
  * - 세션 객체를 무효화시킨다.
  */
 
-
-@WebServlet("/auth/logout.bit")
 @SuppressWarnings("serial")
 public class LogoutServlet extends HttpServlet {
 	@Override
