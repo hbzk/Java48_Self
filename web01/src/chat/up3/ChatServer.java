@@ -1,4 +1,4 @@
-package chat.up1;
+package chat.up3;
 
 import java.awt.BorderLayout;
 import java.awt.Frame;

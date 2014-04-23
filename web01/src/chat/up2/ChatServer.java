@@ -83,7 +83,7 @@ public class ChatServer extends Frame implements ActionListener {
 		friendName = message.split(" ")[1];
 		msgPane.append("[" + friendName + "] 님이 입장하셨습니다. \n");
 		
-		out.println("hello Server");
+		out.println("hello ABC_Server");
 	}
 	
 	public void actionPerformed(ActionEvent e) {

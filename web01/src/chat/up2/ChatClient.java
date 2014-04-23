@@ -85,7 +85,7 @@ public class ChatClient extends Frame implements ActionListener {
 						new InputStreamReader(socket.getInputStream()));
 				out = new PrintStream(socket.getOutputStream());
 				
-				out.println("hello Bernard");
+				out.println("hello ABC_Client");
 				String message = in.readLine();
 				friendName = message.split(" ")[1];
 				msgPane.append("접속되었습니다.\n");
@@ -122,6 +122,9 @@ public class ChatClient extends Frame implements ActionListener {
 	
 	// 1. 스레드 만들기 - Thread 클래스를 상속
 	// - 독립적으로 실행할 코드는 run() 메서드에 넣는다.
+	// * 스레드의 라이프사이클
+	// 스레드 생성 -> start() -> 스레드 실행(run() 호출) -> sleep() -> 스레드 정지
+	// run() 호출 종료 -> 스레드 종료(dead)
 	class MessageReader extends Thread {
 		@Override
 		public void run() {
