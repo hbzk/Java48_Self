@@ -16,10 +16,9 @@ Expression Language
 13) sessionScope: HttpSession의 getAttribute() 호출
 14) applicationScope: ServletContext의 getAttribute 호출
 
-* ELfh 
+* EL로 리터럴(literal) 값 표현
+- 문자열과 숫자 표현 
  --%>
-
-
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

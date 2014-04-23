@@ -1,7 +1,6 @@
 <%-- EL
-*배열 표현 
+* 배열 값 표현 
 --%>
-
 <%@page import="vo.SubjectVo"%>
 <%@page import="java.util.HashMap"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -64,9 +63,6 @@ pageContext.setAttribute("subject", vo);
 ${subject.no}<br>
 ${subject.title}<br>
 ${subject.description}<br>
-
-
-
 
 </body>
 </html>
