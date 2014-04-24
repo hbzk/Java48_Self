@@ -10,6 +10,6 @@
 <h1>업로드 결과</h1>
 이름: ${name}<br>
 나이: ${age}<br>
-<img src="../upload/${file1}"><br>
+<img src="../upload/${file1.name}"><br>
 </body>
 </html>

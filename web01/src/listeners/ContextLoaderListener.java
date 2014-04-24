@@ -1,20 +1,18 @@
 package listeners;
 
-import java.lang.reflect.Method;
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import javax.servlet.http.HttpSession;
 
+import util.DBConnectionPool;
 import controls.SubjectDeleteControl;
 import controls.SubjectDetailControl;
 import controls.SubjectInsertControl;
 import controls.SubjectListControl;
 import controls.SubjectUpdateControl;
+import controls.auth.FileUploadControl;
 import controls.auth.LoginControl;
 import controls.auth.LogoutControl;
-import util.DBConnectionPool;
 import dao.MysqlSubjectDao;
 import dao.MysqlUserDao;
 
@@ -75,6 +73,9 @@ public class ContextLoaderListener implements ServletContextListener {
 		
 		LogoutControl logoutControl = new LogoutControl();
 		sc.setAttribute("/auth/logout.bit", logoutControl);
+		
+		FileUploadControl fileUploadControl = new FileUploadControl();
+		sc.setAttribute("/file/upload.bit", fileUploadControl);
 	}
 	
 
