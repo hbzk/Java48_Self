@@ -15,12 +15,14 @@
   <title>과목목록</title>
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
+<div class="container">
 <jsp:include page="/header.jsp"/>
 <h1>과목 목록(byJSP)</h1>
-<a href='form.html' class="btn btn-primary">새과목</a><br>
-<table border='1' class="table table-striped">
+<a href='insert.bit' class="btn btn-primary">새과목</a><br>
+<table class="table table-striped">
 <tr>
   <th>번호</th>
   <th>과목명</th>
@@ -33,7 +35,9 @@
 <%}%>
 </table>
 <jsp:include page="/footer.jsp"/>
-</body></html>
+</body>
+</div>
+</html>
 
 
 

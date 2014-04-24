@@ -9,11 +9,13 @@ EL 적용
 <meta charset="UTF-8">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
+<div class="container">
 <jsp:include page="/header.jsp"/>
 <h1>과목 상세정보(EL)</h1>
-<table border='1'>
+<table class="table table-bordered">
 	<tr>
 		<th>번호</th>
 		<td>${subject.no}</td>
@@ -24,14 +26,15 @@ EL 적용
 	</tr>
 	<tr>
 		<th>내용</th>
-		<td><textarea rows='5' cols='60' readonly>${subject.description}</textarea></td>
+		<td><textarea class="form-control" rows='7' cols='60' readonly>${subject.description}</textarea></td>
 	</tr>
 </table>
-<a href='list.bit?pageNo=1&pageSize=10'>목록</a>
-<a href='delete.bit?no=${subject.no}'>삭제</a>
-<a href='update.bit?no=${subject.no}'>변경</a>
+<a href='update.bit?no=${subject.no}' class="btn btn-primary">변경</a>
+<a href='list.bit?pageNo=1&pageSize=10' class="btn btn-success">목록</a>
+<a href='delete.bit?no=${subject.no}' class="btn btn-danger">삭제</a>
 <br>
 <jsp:include page="/footer.jsp"/>
+</div>
 </body>
 </html>
 

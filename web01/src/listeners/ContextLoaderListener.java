@@ -1,10 +1,19 @@
 package listeners;
 
+import java.lang.reflect.Method;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.http.HttpSession;
 
+import controls.SubjectDeleteControl;
+import controls.SubjectDetailControl;
+import controls.SubjectInsertControl;
 import controls.SubjectListControl;
+import controls.SubjectUpdateControl;
+import controls.auth.LoginControl;
+import controls.auth.LogoutControl;
 import util.DBConnectionPool;
 import dao.MysqlSubjectDao;
 import dao.MysqlUserDao;
@@ -43,6 +52,31 @@ public class ContextLoaderListener implements ServletContextListener {
 		SubjectListControl subjectListControl = new SubjectListControl();
 		subjectListControl.setSubjectDao(subjectDao);
 		sc.setAttribute("/subject/list.bit", subjectListControl);
+		
+		SubjectDetailControl subjectDetailContol = new SubjectDetailControl();
+		subjectDetailContol.setSubjectDao(subjectDao);
+		sc.setAttribute("/subject/detail.bit", subjectDetailContol);
+		
+		SubjectInsertControl subjectInsertControl = new SubjectInsertControl();
+		subjectInsertControl.setSubjectDao(subjectDao);
+		sc.setAttribute("/subject/insert.bit", subjectInsertControl);
+		
+		SubjectUpdateControl subjectUpdateControl = new SubjectUpdateControl();
+		subjectUpdateControl.setSubjectDao(subjectDao);
+		sc.setAttribute("/subject/update.bit", subjectUpdateControl);
+		
+		SubjectDeleteControl subjectDeleteControl = new SubjectDeleteControl();
+		subjectDeleteControl.setSubjectDao(subjectDao);
+		sc.setAttribute("/subject/delete.bit", subjectDeleteControl);
+		
+		LoginControl loginControl = new LoginControl();
+		loginControl.setUserDao(userDao);
+		sc.setAttribute("/auth/login.bit", loginControl);
+		
+		LogoutControl logoutControl = new LogoutControl();
+		sc.setAttribute("/auth/logout.bit", logoutControl);
 	}
+	
 
+	
 }

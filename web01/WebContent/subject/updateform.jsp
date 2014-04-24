@@ -8,15 +8,19 @@
 <head>
 <meta charset="UTF-8">
 <title>과목 변경폼(JSP, JSP Action)</title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../css/common.css">
 </head>
 <body>
+<div class="container">
 <h1>과목 변경</h1>
-<form action='update.bit' method='post'>
-번호 : <input type='text' name='no' value='${subject.no}' readonly><br>	
-과목명: <input type='text' name='title' value='${subject.title}'><br>
-설명: <textarea name='description' rows='10' cols='80'>${subject.description}</textarea><br>
-<input type='submit' value='변경'>
-<input type='button' value='취소'
+<form action='update.bit' method='post' role="form">
+<label for="no">번호 :</label><input class="form-control" type='text' name='no' value='${subject.no}' readonly><br>
+<label for="title">과목명:</label><input class="form-control" type='text' name='title' value='${subject.title}'><br>
+<label for="title">설명: </label><textarea class="form-control" name='description' rows='10' cols='80'>${subject.description}</textarea><br>
+<input class="btn btn-primary" type='submit' value='변경'>
+<input class="btn btn-danger" type='button' value='취소'
 onclick="location.href='detail.bit?no=${subject.no}'">
 </form>
 
@@ -25,6 +29,7 @@ onclick="location.href='detail.bit?no=${subject.no}'">
 <%--@ include file="../footer.jsp" --%>	<!-- 해당 파일의 내용을 HTML에 바로 include (이후 실행) -->
 
 
+</div>
 </body>
 </html>
 
