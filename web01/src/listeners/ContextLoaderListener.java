@@ -1,11 +1,8 @@
 package listeners;
 
-import java.io.File;
-import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map.Entry;
-import java.util.Properties;
 
 import javax.naming.InitialContext;
 import javax.servlet.ServletContext;
@@ -14,6 +11,7 @@ import javax.servlet.ServletContextListener;
 import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
+import org.reflections.Reflections;
 
 import annotations.Component;
 
@@ -117,8 +115,27 @@ public class ContextLoaderListener implements ServletContextListener {
 		}
 		return null;
 	}
-
+	
 	private void prepareBeansFromAnnotation() throws Exception {
+		Reflections reflections = new Reflections("dao");
+		reflections.merge(new Reflections("controls"));
+		Component compAnno = null;
+		String compName = null;
+		for (Class<?> clazz : reflections.getTypesAnnotatedWith(Component.class)) {
+			compAnno = clazz.getAnnotation(Component.class);
+			compName = compAnno.value();
+			if (compName.equals("")) {
+				compName = clazz.getName();
+			}
+			objPool.put(compName, clazz.newInstance());
+		}
+  }
+	
+	
+	
+	
+	
+/*	private void prepareBeansFromAnnotation() throws Exception {
 		// 클래스들이 있는 절대 경로 알아내기
 		String path = sc.getRealPath("/WEB-INF/classes");
 		File dir = new File(path);
@@ -165,8 +182,9 @@ public class ContextLoaderListener implements ServletContextListener {
 	  		}
 	  	}
 	  }
-	  
-  }
+  }*/
+	
+	
 }
 
 
