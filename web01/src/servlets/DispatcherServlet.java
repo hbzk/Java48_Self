@@ -71,7 +71,7 @@ public class DispatcherServlet extends HttpServlet {
 				}
 			}
 			
-			// * sessionMap이 있다면 HttpSession에 보관
+			// * sessionMap이 있다면 HttpSession에 보관 // > (<-- 로그인)
 			@SuppressWarnings("unchecked")
 			Map<String,Object> sessionMap = 
 			(Map<String,Object>) model.get("sessionMap");
