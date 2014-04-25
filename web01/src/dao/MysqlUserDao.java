@@ -4,14 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import util.DBConnectionPool;
+import javax.sql.DataSource;
+
 import vo.UserVo;
 
 public class MysqlUserDao implements UserDao {
-	DBConnectionPool dbConnectionPool;
+	DataSource dataSource;
 	
-	public void setDBConnectionPool(DBConnectionPool dbConnectionPool) {
-		this.dbConnectionPool = dbConnectionPool;
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
 	}
 	
 	@Override
@@ -20,7 +21,7 @@ public class MysqlUserDao implements UserDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			con = dbConnectionPool.getConnection();
+			con = dataSource.getConnection();
 			stmt = con.prepareStatement("select UNO, NAME, EMAIL, TEL from SE_USERS" +
 					" where EMAIL=? and PWD=?");
 			stmt.setString(1, email);
@@ -40,7 +41,7 @@ public class MysqlUserDao implements UserDao {
 		}	finally {
 			try {rs.close();}	catch (Throwable e2) {}
 			try {stmt.close();}	catch (Throwable e2) {}
-			dbConnectionPool.returnConnection(con);
+			try {con.close();}	catch (Throwable e2) {}
 		}
   }
 

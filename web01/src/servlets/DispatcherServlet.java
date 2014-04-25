@@ -45,7 +45,7 @@ public class DispatcherServlet extends HttpServlet {
 			PageController pc = (PageController) sc.getAttribute(servletPath);
 			
 			// * ServletContext 객체 주입
-			injectServletContext(pc);
+			//injectServletContext(pc); // ContextLoaderListener가 대신 함.
 			
 			// * HttpSession 객체를 주입
 			HttpSession session = request.getSession();
@@ -127,6 +127,7 @@ public class DispatcherServlet extends HttpServlet {
 		}
 	}
 	
+	/* ContextLoaderListener가 대신 처리 함.
   private void injectServletContext(Object obj)  throws Exception {
   	Class<?> clazz = obj.getClass(); // 객체의 클래스 정보를 가져온다.
   	Method[] methods = clazz.getMethods(); // 클래스의 메서드 목록을 얻는다
@@ -139,7 +140,7 @@ public class DispatcherServlet extends HttpServlet {
   			}
   		}
   	}
-	}
+	}*/
 	
 	// request에 들어있는 파라미터 값을 model로 복사한다.
 	private void prepareGeneralRequestData(

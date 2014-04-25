@@ -1,4 +1,4 @@
-package controls.auth;
+package controls;
 
 import java.io.File;
 import java.util.Map;
@@ -6,8 +6,6 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 
 import org.apache.commons.fileupload.FileItem;
-
-import controls.PageController;
 
 public class FileUploadControl implements PageController {
 	ServletContext servletContext;
