@@ -117,8 +117,9 @@ public class ContextLoaderListener implements ServletContextListener {
 	}
 	
 	private void prepareBeansFromAnnotation() throws Exception {
-		Reflections reflections = new Reflections("dao");
-		reflections.merge(new Reflections("controls"));
+		Reflections reflections = new Reflections("dao", "controls");
+		//Reflections reflections = new Reflections("sems.dao");
+		//reflections.merge(new Reflections("sems.controls"));
 		Component compAnno = null;
 		String compName = null;
 		for (Class<?> clazz : reflections.getTypesAnnotatedWith(Component.class)) {
