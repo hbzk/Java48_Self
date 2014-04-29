@@ -24,7 +24,6 @@ public class Test {
 	  if (a2 != a3) {
 	  	System.out.println("a2 != a3");
 	  }
-
   }
 	
 	// 빈의 이름과 별명

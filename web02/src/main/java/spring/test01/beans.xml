@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- collaborators and configuration for this bean go here -->
     <bean id="s1" class="spring.test01.Score"/>
 		<bean name="s2,s3,s4" class="spring.test01.Score"/>
 		<bean name="score-ok!" class="spring.test01.Score"/>
