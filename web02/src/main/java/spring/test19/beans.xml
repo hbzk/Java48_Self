@@ -10,15 +10,20 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-		<!-- 컴포넌트 자동 스캔 => 자동생성 => 의존 객체 주입
-					- @Component가 붙은 클래스를 찾아 객체를 자동 생성하게 만든다.
-					
-					context:component-scan 태그 추가 =>	 - 이 작업을 처리하는 객체가 등록 됨
-					context:annotation-config는 자동으로 활성화 된다.
-					 
+		<!-- 날짜 프로퍼티 값 설정 
+					방법1. SimpleDateFormat 클래스 사용 + 인스턴스 팩토리 메서드 사용
 		-->
-		<context:component-scan base-package="spring.test18"/>
+		<bean id="dateFormat" class="java.text.SimpleDateFormat">
+			<constructor-arg value="yyyy-MM-dd"/>
+		</bean>
 		
-	
+		
+		<bean id="tire1" class="spring.test19.Tire" c:maker="금호타이어">
+			<property name="createdDate">
+				<bean factory-bean="dateFormat" factory-method="parse">
+					<constructor-arg value="2014-5-1"/>
+				</bean>
+			</property>
+		</bean>
 		
 </beans>
