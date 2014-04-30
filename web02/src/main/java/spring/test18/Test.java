@@ -1,4 +1,4 @@
-package spring.test14;
+package spring.test18;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Test {
 	public static void main(String[] args) {
 		ClassPathXmlApplicationContext beanContainer =
-				new ClassPathXmlApplicationContext("spring/test14/beans.xml");
+				new ClassPathXmlApplicationContext("spring/test18/beans.xml");
 		
 		Engine e1 = (Engine) beanContainer.getBean("engine1");
 		System.out.println(e1);

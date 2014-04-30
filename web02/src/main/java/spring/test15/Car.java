@@ -1,14 +1,13 @@
-package spring.test14;
+package spring.test15;
 
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-/* @Autowired
- * - 의존 객체 자동 주입 애노테이션
- * - 이 애노테이션이 붙은 프로퍼티는 자동으로 값을 할당한다. (셋터 자동 호출)
- * - 셋터 메서드에 넘어가는 값은 파라미터의 타입과 일치하는 객체를 찾아서 꼽아준다.
+/* @Autowired 와 @Qualifier
+ * - 주입할 객체를 @Qualifier로 지정한다.
  */
 
 //@Component("car1")
@@ -68,6 +67,7 @@ public class Car {
 	}
 	
 	@Autowired(required=false) // defalut 'true'
+	@Qualifier("engine2")
 	public void setEngine(Engine engine) {
 		this.engine = engine;
 	}
