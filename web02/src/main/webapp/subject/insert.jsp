@@ -12,7 +12,11 @@
 </head>
 <body>
 <div class="container">
-<p>과목 등록 성공입니다.</p>
+
+<br><br><br><br><br>
+<h1>과목 등록 성공입니다.</h1>
+<br><br>
+
 <jsp:include page="/footer.jsp"/>
 </div>
 </body>
