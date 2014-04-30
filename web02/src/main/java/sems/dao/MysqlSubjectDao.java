@@ -8,18 +8,19 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import sems.annotations.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import sems.vo.SubjectVo;
 
-/* SubjectVo의 setter/getter 사용
- */
 @Component
 public class MysqlSubjectDao implements SubjectDao {
+	@Autowired
 	DataSource dataSource;
 	
-	public void setDataSource(DataSource dataSource) {
+	/*public void setDataSource(DataSource dataSource) { // > @Autowired
 		this.dataSource = dataSource;
-	}
+	}*/
 
 	public void insert(SubjectVo subject) throws Throwable {
 		Connection con = null;

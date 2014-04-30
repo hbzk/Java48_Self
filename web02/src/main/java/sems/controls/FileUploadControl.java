@@ -6,8 +6,8 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 
 import org.apache.commons.fileupload.FileItem;
+import org.springframework.stereotype.Component;
 
-import sems.annotations.Component;
 @Component("/file/upload.bit")
 public class FileUploadControl implements PageController {
 	ServletContext servletContext;
