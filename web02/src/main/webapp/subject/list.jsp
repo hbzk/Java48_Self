@@ -20,7 +20,7 @@
 <body>
 <div class="container">
 <jsp:include page="/header.jsp"/>
-<h1>과목 목록(byJSP)</h1>
+<h1>과목 목록</h1>
 <a href='insert.bit' class="btn btn-primary">새과목</a><br>
 <table class="table table-striped">
 <tr>
