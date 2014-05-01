@@ -23,4 +23,8 @@
 		</context:component-scan>
 		
 		<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/studydb"/>
+		
+		<!-- mybaits의 SqlSessionFactory 객체를 생성 -->
+		<bean id=sqlSessionFory"
+			class="org.spache.ibatis.session" ></bean>
 </beans>
