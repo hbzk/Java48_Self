@@ -1,4 +1,4 @@
-package sems.controls.auth;
+package sems.controls;
 
 import java.util.HashMap;
 
@@ -18,23 +18,23 @@ import sems.dao.UserDao;
 import sems.vo.UserVo;
 
 @Controller
-@RequestMapping("/auth/login")
-public class LoginControl {
-	static Logger log = Logger.getLogger(LoginControl.class);
+@RequestMapping("/auth")
+public class AuthControl {
+	static Logger log = Logger.getLogger(AuthControl.class);
 	@Autowired
 	UserDao userDao;
 	
-	public LoginControl() {
-	  log.debug("LoginControl 생성됨");
+	public AuthControl() {
+	  log.debug("AuthControl 생성됨");
   }
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginForm() {
 		return "/auth/login.jsp";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST)
-	public String execute(
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public String login(
 			String email,
 			String password,
 			@RequestParam(required=false) String saveEmail,
@@ -68,5 +68,11 @@ public class LoginControl {
 			throw new Error(ex);
 		}
 	}
-
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:login.bit";
+	}
+	
 }
