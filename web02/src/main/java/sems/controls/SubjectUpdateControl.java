@@ -1,5 +1,6 @@
 package sems.controls;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +12,14 @@ import sems.vo.SubjectVo;
 
 @Controller
 @RequestMapping("/subject/update")
+
 public class SubjectUpdateControl {
+	static Logger log = Logger.getLogger(SubjectUpdateControl.class);
+	
+	public SubjectUpdateControl() {
+		log.debug("SubjectUpdateControl 생성됨");
+	}
+	
 	@Autowired
 	SubjectDao subjectDao;
 	

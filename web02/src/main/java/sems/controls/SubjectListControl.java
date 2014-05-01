@@ -1,7 +1,9 @@
 package sems.controls;
 
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,12 @@ import sems.vo.SubjectVo;
 //@Component("/subject/list.bit")
 @Controller
 public class SubjectListControl {
+	static Logger log = Logger.getLogger(SubjectListControl.class);
+	
+	public SubjectListControl() {
+		log.debug("SubjectListControl 생성됨");
+	}
+	
 	@Autowired
 	SubjectDao subjectDao;
 	
@@ -28,7 +36,11 @@ public class SubjectListControl {
 		Model model) {
 		
 		try {
-	    List<SubjectVo> list = subjectDao.list(pageNo, pageSize);
+			HashMap<String, Integer> params = new HashMap<String, Integer>();
+			params.put("startIndex", (pageNo - 1) * pageSize);
+			params.put("pageSize", pageSize);
+			
+	    List<SubjectVo> list = subjectDao.list(params);
 	    model.addAttribute("list", list);
 	    return "/subject/list.jsp";
 	    

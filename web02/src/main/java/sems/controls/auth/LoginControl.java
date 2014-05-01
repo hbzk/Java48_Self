@@ -1,9 +1,12 @@
 package sems.controls.auth;
 
+import java.util.HashMap;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +20,13 @@ import sems.vo.UserVo;
 @Controller
 @RequestMapping("/auth/login")
 public class LoginControl {
+	static Logger log = Logger.getLogger(LoginControl.class);
 	@Autowired
 	UserDao userDao;
+	
+	public LoginControl() {
+	  log.debug("LoginControl 생성됨");
+  }
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public String loginForm() {
@@ -36,7 +44,11 @@ public class LoginControl {
 				UserVo userVo = null;
 				
 				try {
-					userVo = userDao.getUser(email, password);
+					HashMap<String,String> params = new HashMap<String,String>();
+					params.put("email", email);
+					params.put("password", password);
+					
+					userVo = userDao.getUser(params);
 				} catch (DaoException e) { // 로그인 실패!
 					return "redirect:login.bit";
 				}
