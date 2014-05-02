@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import sems.vo.StudentVo;
 
 //@Controller
-//@RequestMapping("/student")
+@RequestMapping("/student")
 public class StudentControl01 {
 	static long fileCount;
 	
