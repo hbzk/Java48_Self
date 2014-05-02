@@ -13,7 +13,7 @@ public class UserVo implements Serializable {
   String 	fax;
   String 	postNo;
   String 	address;
-  String 	photoNo;
+  String 	photoPath;
   
 	public int getNo() {
 		return no;
@@ -72,10 +72,10 @@ public class UserVo implements Serializable {
 		return this;
 	}
 	public String getPhotoNo() {
-		return photoNo;
+		return photoPath;
 	}
 	public UserVo setPhotoNo(String photoNo) {
-		this.photoNo = photoNo;
+		this.photoPath = photoNo;
 		return this;
 	}
 }
