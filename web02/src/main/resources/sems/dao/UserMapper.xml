@@ -26,6 +26,10 @@
     select UNO, NAME, EMAIL, TEL from SE_USERS 
     where EMAIL=#{email} and PWD=#{password}
   </select>
-
+	
+	<insert id="insert" parameterType="userVo" useGeneratedKeys="true" keyColumn="UNO" keyProperty="no">
+		insert into SE_USERS (NAME,EMAIL,PWD,TEL,FAX,POSTNO,ADDR,PHOT_PATH)
+		value (#{name},#{email},#{password},#{tel},#{fax},#{postNo},#{address},#{photoPath})
+	</insert>
 
 </mapper>

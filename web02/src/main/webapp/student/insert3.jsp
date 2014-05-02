@@ -30,7 +30,7 @@
 계좌번호: ${student.bankingAccount}<br>
 
 <form role="form" action="insert4.bit" method="post">
-입력 정보를 등록하시겠습니까
+입력 정보를 등록하시겠습니까?
 <br>
 
 <br>
