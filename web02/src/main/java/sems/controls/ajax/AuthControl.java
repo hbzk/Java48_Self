@@ -1,4 +1,4 @@
-package sems.controls;
+package sems.controls.ajax;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,31 +24,26 @@ public class AuthControl {
 	@Autowired
 	AuthService authService;
 
-	public AuthControl() {
-		log.debug("AuthControl 생성됨");
-	}
-	
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String loginForm() {
-		return "auth/login";
-	}
-	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(
 			String email, 
 			String password, 
 			@RequestParam(required=false) String saveEmail,
 			HttpSession session,
-			HttpServletResponse response) {
+			HttpServletResponse response,
+			Model model) {
 		try {
 				UserVo userVo = authService.getLoginUser(
 							email, password, UserGroup.STUDENT);
 				if (userVo == null) {
-					throw new RuntimeException("로그인 실패!");
+					model.addAttribute("result", "failure");
+				}	else {
+					model.addAttribute("result", "success");
 				}
+				
 				session.setAttribute("loginUser", userVo);
 			
-				if (saveEmail != null) {
+				if (saveEmail.equals("true")) {
 					Cookie cookie = new Cookie("loginEmail", email);
 					cookie.setDomain("s09.java48.com"); // 서버 범위
 					cookie.setPath("/web02");					// 하위 폴더 범위
@@ -55,7 +51,7 @@ public class AuthControl {
 					response.addCookie(cookie);
 				}
 				
-				return "redirect:../subject/list.bit?pageNo=1&pageSize=10";
+				return "auth/ajax/loginResult";
 		} catch (Throwable ex) {
 			throw new Error(ex);
 		}

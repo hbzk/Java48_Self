@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+<title>로그인</title>
+</head>
+<body>
+<div class="container">
+<h1>로그인</h1>
+<form class="form-inline" action="login.ajax" method="post">
+
+<div class="form-group">
+	<label for="email" class="sr-only">이메일</label>
+	<input id="email" class="form-control" type="text" name="email" value="" placeholder="이메일">
+</div>
+
+<div class="form-group">
+	<label for="password" class="sr-only">암호</label>
+	<input id="password" class="form-control" type="password" name="password" placeholder="암호">
+</div>
+<br>
+
+<div class="checkbox">
+	<label for="saveEmail">
+		<input id="saveEmail" type="checkbox" name="saveEmail"> 이메일 저장
+	</label>
+</div>
+
+<br><br>
+<button id="btnLogin" type="submit" class="btn btn-primary">로그인</button>
+</form>
+</div>
+
+
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="login.js"></script>
+</body>
+</html>
