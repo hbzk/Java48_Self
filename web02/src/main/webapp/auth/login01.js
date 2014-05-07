@@ -16,11 +16,10 @@ $(document).ready(function(){
 				password: $('#password').val(),
 				saveEmail: ($('#saveEmail:checked').length > 0) ? 'true':'false'
 			},
-			success: function(jsonObj){
-				var result = jsonObj.ajaxResult;
-				console.log(result);
-				if (result.status == "ok" && result.data == "success") {
-					location.href="../subject/main.html";
+			success: function(data){
+				console.log(data);
+				if (data.status == "ok" && data.result == "success") {
+					location.href="../subject/list.bit";
 				} else {
 					alert('이메일 또는 암호가 맞지 않습니다.');
 				}
@@ -33,6 +32,5 @@ $(document).ready(function(){
 		})
 		
 		// 비동기 요청 후 성공 여부에 관계없이 진행 되는 위치
-		// 로그인 성공 후 해야 할 작업은 여기에 기술하면 안된다.
 	});
 });

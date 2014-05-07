@@ -16,11 +16,10 @@ $(document).ready(function(){
 				password: $('#password').val(),
 				saveEmail: ($('#saveEmail:checked').length > 0) ? 'true':'false'
 			},
-			success: function(jsonObj){
-				var result = jsonObj.ajaxResult;
-				console.log(result);
+			success: function(result){
+				// console.log(result);
 				if (result.status == "ok" && result.data == "success") {
-					location.href="../subject/main.html";
+					location.href="../subject/list.bit";
 				} else {
 					alert('이메일 또는 암호가 맞지 않습니다.');
 				}

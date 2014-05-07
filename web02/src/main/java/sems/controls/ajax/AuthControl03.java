@@ -6,7 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,25 +16,29 @@ import sems.services.UserGroup;
 import sems.vo.AjaxResult;
 import sems.vo.UserVo;
 
-@Controller
+import com.google.gson.Gson;
+
+//@Controller
 @RequestMapping("/auth")
-public class AuthControl {
-	static Logger log = Logger.getLogger(AuthControl.class);
+public class AuthControl03 {
+	static Logger log = Logger.getLogger(AuthControl03.class);
 	
 	@Autowired
 	AuthService authService;
 
-	/* return 타입은 JSON으로 출력할 객체이다.
-	 * - 자동으로 JSON 문자열로 변환하려면, 빈 설정 파일에
-	 * 		JSON 변환 Resolver를 등록해야한다.
+	/* return 타입이 HttpEntity인 경우, JSP를 include하지 않고,
+	 * HttpEntity의 내용을 클라이언트로 보낸다.
+	 * (=> return 타입이 String이 아니면 ViewResolver가 실행되지 않는다.)
+	 * 
 	 */
 	@RequestMapping(value="/login") //, method=RequestMethod.POST
-	public AjaxResult login ( 
+	public HttpEntity<String> login ( 
 			String email, 
 			String password, 
 			@RequestParam(required=false) String saveEmail,
 			HttpSession session,
-			HttpServletResponse response) {
+			HttpServletResponse response,
+			Model model) {
 		try {
 			
 			UserVo userVo = authService.getLoginUser(
@@ -58,12 +63,16 @@ public class AuthControl {
 			}
 			
 			response.setContentType("text/html;charset=UTF-8");
-			return result;
+			return new HttpEntity<String> (new Gson().toJson(result));
+			
+			/*HttpHeaders respHeaders = new HttpHeaders();
+			response.setContentType("text/html;charset=UTF-8");
+			return new HttpEntity<String> (new Gson().toJson(result), respHeaders);
+			*/
+
 			
 		} catch (Throwable ex) {
-			return new AjaxResult()
-							.setStatus("error").setData(ex.getMessage());
-			//throw new Error(ex);
+			throw new Error(ex);
 		}
 	}
 	
