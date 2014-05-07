@@ -27,24 +27,24 @@ public class StudentControl {
 	
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
 	public String intsert() {
-		return "/student/insert.jsp";
+		return "student/insert";
 	}
 	
 	@RequestMapping(value="/insert2", method=RequestMethod.POST)
 	public String intsert2(StudentVo student, Model model) {
 		model.addAttribute("student", student);
-		return "/student/insert2.jsp";
+		return "student/insert2";
 	}
 	
 	@RequestMapping(value="/insert3", method=RequestMethod.POST)
 	public String intsert3(@ModelAttribute("student") StudentVo student) {
-		return "/student/insert3.jsp";
+		return "student/nsert3";
 	}
 	
 	@RequestMapping(value="/insert4", method=RequestMethod.POST)
 	public String intsert4(@ModelAttribute("student") StudentVo student) {
 		studentService.add(student);
-		return "/student/insert4.jsp";
+		return "student/nsert4";
 	}
 }
 

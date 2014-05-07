@@ -37,7 +37,7 @@ public class FileUploadControl {
 				model.addAttribute("filename", filename);
 			}
 			
-			return "/file/uploadResult.jsp";
+			return "file/uploadResult";
 		
 		} catch (Throwable ex) {
 			throw new Error(ex);
