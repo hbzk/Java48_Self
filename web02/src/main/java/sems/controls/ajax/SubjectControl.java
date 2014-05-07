@@ -3,6 +3,9 @@ package sems.controls.ajax;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import sems.dao.SubjectDao;
+import sems.vo.AjaxResult;
 import sems.vo.SubjectVo;
 
 @Controller
@@ -22,14 +26,12 @@ public class SubjectControl {
 	@Autowired
 	SubjectDao subjectDao;
 	
-	public SubjectControl() {
-	  log.debug("SubjectControl 생성됨");
-  }
-	
 	@RequestMapping("/list")
-  public String list( 
+  public AjaxResult list( 
 		@RequestParam(value="pageNo", defaultValue="1") int pageNo,
 		@RequestParam(value="pageSize", defaultValue="10") int pageSize,
+		HttpSession session,
+		HttpServletResponse response,
 		Model model) {
 		
 		try {
@@ -38,11 +40,18 @@ public class SubjectControl {
 			params.put("pageSize", pageSize);
 			
 	    List<SubjectVo> list = subjectDao.list(params);
-	    model.addAttribute("list", list);
-	    return "subject/list";
+	    int listSize = list.size();
+	    session.setAttribute("list", list);
+	    
+	    
+	    AjaxResult result = new AjaxResult().setStatus("ok").setData(list).setPageSize(listSize);
+	    
+	    response.setContentType("text/html;charset=UTF-8");
+	    return result;
 	    
     } catch (Throwable ex) {
-	    throw new Error(ex);
+			return new AjaxResult()
+					.setStatus("error").setData(ex.getMessage());
     }
   }
 	

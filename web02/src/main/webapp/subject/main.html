@@ -5,25 +5,46 @@
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="main.css">
 <meta charset="UTF-8">
 <title>과목목록</title>
 </head>
 <body>
 
+
 <div class="container">
+<div id="header" style="border: 1px solid #AEBEDF; margin-top:80px; background-color: #AEBEDF; 
+  font-weight: solid; font-size: 18px; color: #000000;">
+<!-- <a href="${pageContext.request.contextPath}/auth/logout.bit">로그아웃</a> -->
+</div>
+
 <h1>과목목록(AJAX)</h1>
+<br><br>
+
+<table id="listTable" class="table table-striped">
+<tr>
+  <th>번호</th>
+  <th>과목명</th>
+</tr>
+
+</table>
 
 
-<a href="#">[이전]</a>
-<!-- 첫페이지일 경우 alert 혹은 버튼 사라지기  -->
-<a href="#">[다음]</a>
+<a href='insert.bit' class="btn btn-primary" id="new">새과목</a><br>
 
+<div id="listDiv">
+	<a id="pre" class="btn btn-primary list" href="#">◀</a>
+	<a id="next" class="btn btn-primary list" href="#">▶</a>
+</div>
 
 </div>
 
-
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="main.js"></script>
+<script src="jquery.cookie.js"></script>
+<script src="main.js">
+
+
+</script>
 </body>
 </html>
 
