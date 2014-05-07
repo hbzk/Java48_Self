@@ -19,6 +19,13 @@
     insert into SE_STUDS (UNO,COMP,POS,STAT,LAST_SCH,ACCT)
     value (#{no},#{company},#{position},#{workingState},#{lastSchool},#{bankingAccount})
   </insert>
-
+  <select id="getLoginUser" 
+      parameterType="map" resultMap="studentMap">
+    select T1.UNO, T1.NAME, T1.EMAIL, T1.TEL, T2.COMP, T2.POS, T2.STAT 
+    from SE_USERS T1 left outer join SE_STUDS T2
+    on T1.UNO = T2.UNO
+    where T1.EMAIL=#{email} and T1.PWD=#{password}
+  </select>
+  
 
 </mapper>

@@ -1,7 +1,5 @@
 package sems.controls;
 
-import java.util.HashMap;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,20 +11,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import sems.dao.DaoException;
-import sems.dao.UserDao;
+import sems.services.AuthService;
+import sems.services.UserGroup;
 import sems.vo.UserVo;
 
 @Controller
 @RequestMapping("/auth")
 public class AuthControl {
 	static Logger log = Logger.getLogger(AuthControl.class);
-	@Autowired
-	UserDao userDao;
 	
+	@Autowired
+	AuthService authService;
+
 	public AuthControl() {
-	  log.debug("AuthControl 생성됨");
-  }
+		log.debug("AuthControl 생성됨");
+	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String loginForm() {
@@ -35,30 +34,23 @@ public class AuthControl {
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(
-			String email,
-			String password,
+			String email, 
+			String password, 
 			@RequestParam(required=false) String saveEmail,
 			HttpSession session,
 			HttpServletResponse response) {
 		try {
-				UserVo userVo = null;
-				
-				try {
-					HashMap<String,String> params = new HashMap<String,String>();
-					params.put("email", email);
-					params.put("password", password);
-					
-					userVo = userDao.getUser(params);
-				} catch (DaoException e) { // 로그인 실패!
-					return "redirect:login.bit";
+				UserVo userVo = authService.getLoginUser(
+							email, password, UserGroup.STUDENT);
+				if (userVo == null) {
+					throw new RuntimeException("로그인 실패!");
 				}
-				
 				session.setAttribute("loginUser", userVo);
-				
+			
 				if (saveEmail != null) {
 					Cookie cookie = new Cookie("loginEmail", email);
-					cookie.setDomain("s09.java48.com"); // 서버 범위
-					cookie.setPath("/web02");					// 하위 폴더 범위
+					cookie.setDomain("t.java48.com"); // 서버 범위
+					cookie.setPath("/web02t");					// 하위 폴더 범위
 					
 					response.addCookie(cookie);
 				}
@@ -70,9 +62,10 @@ public class AuthControl {
 	}
 	
 	@RequestMapping("/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:login.bit";
-	}
-	
+  public String logout(HttpSession session) {
+	  session.invalidate();
+	  return "redirect:login.bit";
+  }
 }
+
+
