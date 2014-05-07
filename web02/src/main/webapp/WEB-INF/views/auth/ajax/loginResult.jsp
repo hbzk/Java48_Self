@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/plain; charset=UTF-8"
     pageEncoding="UTF-8"%>
 {
-	status: "ok",
-	result: "${result}"
+	"status": "ok",
+	"result": "${result}"
 }
