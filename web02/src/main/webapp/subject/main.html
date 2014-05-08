@@ -5,51 +5,49 @@
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="../css/common.css">
-	<link rel="stylesheet" href="main.css">
-<meta charset="UTF-8">
-<title>과목목록</title>
+	<title>과목목록</title>
 </head>
 <body>
-
-
 <div class="container">
-<div id="header" style="border: 1px solid #AEBEDF; margin-top:80px; background-color: #AEBEDF; 
-  font-weight: solid; font-size: 18px; color: #000000;">
-<!-- <a href="${pageContext.request.contextPath}/auth/logout.bit">로그아웃</a> -->
+
+<div id="header">
 </div>
 
+<div id ="content">
 <h1>과목목록(AJAX)</h1>
-<br><br>
-
-<table id="listTable" class="table table-striped">
+<a href='insert.bit' class="btn btn-primary">새과목</a><br>
+<table id="subjectList" class="table table-striped">
 <tr>
   <th>번호</th>
   <th>과목명</th>
+  <th></th>
 </tr>
-
 </table>
 
 
-<a href='insert.bit' class="btn btn-primary" id="new">새과목</a><br>
+<button id="prevPage" class="btn">이전</button>
+<span id="currPageNo"></span>
+<button id="nextPage" class="btn">다음</button>
 
-<div id="listDiv">
-	<a id="pre" class="btn btn-primary list" href="#">◀</a>
-	<a id="next" class="btn btn-primary list" href="#">▶</a>
+<h2>과목 상세 정보</h2>
+</div>
+
+
+
+
+<div id="footer">
 </div>
 
 </div>
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="jquery.cookie.js"></script>
-<script src="main.js">
+<script src="../js/common.js"></script>
+<script src="main.js"></script>
 
-
+<script type="text/javascript">
+console.log("HTML 로딩 완료");
 </script>
+
 </body>
 </html>
 
-
-<!-- 
-1. 기능 구현
-2. 조건 처리
-3. css -->
