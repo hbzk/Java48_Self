@@ -3,16 +3,8 @@ package sems.vo;
 public class AjaxResult {
 	String 	status;
 	Object 	data;
-	int 		pageSize;
 	
 	
-	public int getPageSize() {
-		return pageSize;
-	}
-	public AjaxResult setPageSize(int pageSize) {
-		this.pageSize = pageSize;
-		return this;
-	}
 	public String getStatus() {
 		return status;
 	}

@@ -12,6 +12,7 @@ $(document).ready(function(){
 		if (currPageNo > 1) {
 			loadSubjectList(currPageNo - 1);
 			$('#subjectList').effect('slide', { direction: 'left'}, 400);
+			
 		}
 	})
 	
@@ -23,20 +24,65 @@ $(document).ready(function(){
 	
 	// >>>>>>>>>>>>>>>> live litener 등록 <<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
 	$(document).on('click', 'button.rowDelBtn', function(){
-		$.getJSON(bit.contextRoot + '/subject/delete.ajax?no=' + $(this).attr('data-no'),
+		deleteSubject( $(this).attr('data-no') );
+	});
+	
+
+	$(document).on('click', 'a.titleLink', function(){
+		$.getJSON(bit.contextRoot + '/subject/detail.ajax?no=' + $(this).attr('data-no'),
 			function(jsonObj){
 				var result = jsonObj.ajaxResult;
-				//if (result.status == "ok") {
-					loadSubjectList(currPageNo);
-					$('#subjectList').show('clip', 500);
-				//}
+				if (result.status == "ok") {
+					$('#no').val(result.data.no);
+					$('#title').val(result.data.title);
+					$('#description').val(result.data.description);
+					
+					changeFormState('update');
+				} else {
+					alert('해당 과목이 없습니다.')
+				}
 		});
-	})
+	});
 	
-	// UI 테스트
-	$('#btnUi').click(function(){
-		
-	})
+
+	$('#btnAdd').click(function(){
+		$.post(
+			bit.contextRoot + '/subject/insert.ajax',
+			{
+				title: $('#title').val(),
+				description: $('#description').val()
+			},
+			function(jsonObj) {
+				console.log(jsonObj);
+				loadSubjectList(currPageNo);
+				$('#btnReset').click();
+			},
+			'json');
+	});
+	
+	$('#btnChange').click(function(){
+		$.post(
+			bit.contextRoot + '/subject/update.ajax',
+			{
+				no: $('#no').val(),
+				title: $('#title').val(),
+				description: $('#description').val()
+			},
+			function(jsonObj) {
+				console.log(jsonObj);
+				loadSubjectList(currPageNo);
+				$('#btnReset').click();
+			},
+			'json');
+	});
+	
+	$('#btnDelete').click(function(){
+		deleteSubject( $('#no').val() );
+	});
+	
+	$('#btnReset').click(function(){
+		changeFormState('new');
+	});
 	
 	
 	
@@ -57,6 +103,17 @@ function toggleBtn() {
 	}
 }
 
+function deleteSubject(no) {
+	$.getJSON(bit.contextRoot + '/subject/delete.ajax?no=' + no,
+			function(jsonObj){
+				var result = jsonObj.ajaxResult;
+				if (result.status == "ok") {
+					loadSubjectList(currPageNo);
+					$('#btnReset').click();
+					$('#subjectList').show('clip', 500);
+				}
+		});
+}
 
 function loadSubjectList(pageNo) {
 	$.getJSON(
@@ -64,7 +121,6 @@ function loadSubjectList(pageNo) {
 		function(jsonObj){
 			var result = jsonObj.ajaxResult;
 			listSize = result.data.length;
-			console.log(listSize);
 			
 			if (listSize < 10) {
 				$('#nextPage').attr('disabled', 'disabled');
@@ -83,7 +139,9 @@ function loadSubjectList(pageNo) {
 					.append('<td>' + subject.no)
 					.append($('<td>')
 						.append($('<a>')
-							.attr('href', contextRoot + '/subject/detail.bit?no=' + subject.no)
+							.addClass('titleLink')
+							.attr('href', '#')
+							.attr('data-no', subject.no)
 							.text(subject.title)
 						)
 					)
@@ -97,7 +155,22 @@ function loadSubjectList(pageNo) {
 				});
 				currPageNo = pageNo;
 				$('#currPageNo').text(pageNo);
+				
+				$('#btnReset').click();
 				toggleBtn();
 			}
 	});
 }
+
+function changeFormState(state) {
+	if (state == 'update') {
+		$('.updateFormItem').css('display', '');
+		$('.newFormItem').css('display', 'none');
+	}	else {
+		$('.updateFormItem').css('display', 'none');
+		$('.newFormItem').css('display', '');
+	}
+}
+
+
+

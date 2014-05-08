@@ -72,9 +72,9 @@ public class AuthControl {
 	}
 	
 	@RequestMapping("/logout")
-  public String logout(HttpSession session) {
+  public AjaxResult logout(HttpSession session) {
 	  session.invalidate();
-	  return "redirect:login.bit";
+	  return new AjaxResult().setData("ok");
 	}
 	
 	@RequestMapping("/getLoginUser")

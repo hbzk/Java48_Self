@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="main.css">
 	<title>과목목록</title>
 </head>
 <body>
@@ -12,11 +13,11 @@
 
 <div id="header">
 </div>
-<br><br>
+<br>
 <div id ="content">
 
 <h1>과목목록(AJAX)</h1>
-<a href='insert.bit' class="btn btn-primary">새과목</a><br>
+<!-- <a href='insert.bit' class="btn btn-primary">새과목</a><br> -->
 
 <div id="tableDiv">
 <table id="subjectList" class="table table-striped">
@@ -27,9 +28,6 @@
 </tr>
 </table>
 </div>
-<br><br>
-
-
 <div id="nav">
 <button id="prevPage" class="btn btn-info">이전 페이지</button>
  <span id="currPageNo"></span> 
@@ -37,7 +35,27 @@
 </div>
 
 
-<!-- <h2 id="target">과목 상세 정보</h2> -->
+
+<h2 id="target">과목 상세 정보</h2>
+<form>
+<div class="form-group updateFormItem" style="display:none;" >
+	<label for="no">번호</label>
+	<input id='no' class="form-control" type='text' readonly>
+</div>
+<div class="form-group">
+	<label for="title">과목명</label>
+	<input id='title' class="form-control" type='text'>
+</div>
+<div class="form-group">
+	<label for="title">설명</label>
+	<textarea id='description' class="form-control" rows='10' cols='80'></textarea>
+</div>
+
+<button id="btnAdd" type="button" class="btn btn-primary newFormItem">추가</button>
+<button id="btnChange" type="button" class="btn btn-primary updateFormItem" style="display:none;">변경</button>
+<button id="btnDelete" type="button" class="btn btn-danger updateFormItem" style="display:none;">삭제</button>
+<button id="btnReset" type="reset" class="btn btn-success">취소</button>
+</form>
 </div>
 
 <br><br>

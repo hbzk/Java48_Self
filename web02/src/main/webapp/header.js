@@ -14,3 +14,16 @@ $(function(){
 			}
 		});
 });
+
+$('#btnLogout').click(function(){
+	$.getJSON(
+		bit.contextRoot + '/auth/logout.ajax',
+		function(jsonObj){
+			var result = jsonObj.ajaxResult;
+			if (result.status == "ok") {
+				location.href = contextPath + "/auth/login.html";
+			} else {
+				alert("로그아웃 중 오류 발생");
+			}
+		});
+}); 

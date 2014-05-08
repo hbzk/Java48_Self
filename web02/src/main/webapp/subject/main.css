@@ -1,37 +1,30 @@
-body {
-	background-color: #AEBEDF;
-}
-
-h1 {
-	text-align: center;
-}
-
-#new {
-	margin-left: 690px;
-}
+@CHARSET "UTF-8";
 
 .container {
-    width: 800px;
+	width: 600px;
 }
 
+#tableDiv {
+	min-height: 200px;
+}
 
-#listDiv {
+#subjectList {
+	min-height: 60px;
+}
+
+/* .btn[disabled] {
+	background: red;
+} */
+
+#nav {
+	margin: 0 auto;
 	text-align: center;
 }
-.list {
-	margin-left: 10px;
+
+#prevPage {
+	margin-right: 20px;
 }
 
-#foot {
-	margin-top: 20px;
-}
-
-#header {
-	text-align: right;
-}
-
-
-
-a {
-	color: black;
+#nextPage {
+	margin-left: 20px;
 }
