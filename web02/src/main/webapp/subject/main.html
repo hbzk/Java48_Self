@@ -12,10 +12,13 @@
 
 <div id="header">
 </div>
-
+<br><br>
 <div id ="content">
+
 <h1>과목목록(AJAX)</h1>
 <a href='insert.bit' class="btn btn-primary">새과목</a><br>
+
+<div id="tableDiv">
 <table id="subjectList" class="table table-striped">
 <tr>
   <th>번호</th>
@@ -23,16 +26,21 @@
   <th></th>
 </tr>
 </table>
+</div>
+<br><br>
 
 
-<button id="prevPage" class="btn">이전</button>
-<span id="currPageNo"></span>
-<button id="nextPage" class="btn">다음</button>
-
-<h2>과목 상세 정보</h2>
+<div id="nav">
+<button id="prevPage" class="btn btn-info">이전 페이지</button>
+ <span id="currPageNo"></span> 
+<button id="nextPage" class="btn btn-info">다음 페이지</button>
 </div>
 
 
+<!-- <h2 id="target">과목 상세 정보</h2> -->
+</div>
+
+<br><br>
 
 
 <div id="footer">
@@ -41,6 +49,7 @@
 </div>
 
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="../js/common.js"></script>
 <script src="main.js"></script>
 

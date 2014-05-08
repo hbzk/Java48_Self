@@ -1,5 +1,8 @@
 var currPageNo = 1;
+var pageNo = 1;
 var pageSize = 10;
+
+var listSize = 0;
 
 $(document).ready(function(){
 	$('#header').load('../header.html');
@@ -8,11 +11,14 @@ $(document).ready(function(){
 	$('#prevPage').click(function(event){
 		if (currPageNo > 1) {
 			loadSubjectList(currPageNo - 1);
+			$('#subjectList').effect('slide', { direction: 'left'}, 400);
 		}
 	})
 	
 	$('#nextPage').click(function(){
 		loadSubjectList(currPageNo + 1);
+		$('#subjectList').effect('slide', { direction: 'right'}, 300);
+
 	})
 	
 	// >>>>>>>>>>>>>>>> live litener 등록 <<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
@@ -22,12 +28,34 @@ $(document).ready(function(){
 				var result = jsonObj.ajaxResult;
 				//if (result.status == "ok") {
 					loadSubjectList(currPageNo);
+					$('#subjectList').show('clip', 500);
 				//}
 		});
 	})
 	
+	// UI 테스트
+	$('#btnUi').click(function(){
+		
+	})
+	
+	
+	
+	// 페이지 로드 시작
+	
+	$('#subjectList').hide();
 	loadSubjectList(1);
+	$('#subjectList').show('clip', 500);
+	
+	toggleBtn();
 });
+
+function toggleBtn() {
+	if (currPageNo == 1) {
+		$('#prevPage').attr('disabled', 'disabled');
+	}	else {
+		$('#prevPage').removeAttr('disabled');
+	}
+}
 
 
 function loadSubjectList(pageNo) {
@@ -35,6 +63,15 @@ function loadSubjectList(pageNo) {
 		bit.contextRoot + '/subject/list.ajax?pageNo=' + pageNo + '&pageSize=' + pageSize,
 		function(jsonObj){
 			var result = jsonObj.ajaxResult;
+			listSize = result.data.length;
+			console.log(listSize);
+			
+			if (listSize < 10) {
+				$('#nextPage').attr('disabled', 'disabled');
+			}	else {
+				$('#nextPage').removeAttr('disabled');
+			}
+			
 			
 			if (result.data.length > 0) {
 				var table = $('#subjectList');
@@ -60,6 +97,7 @@ function loadSubjectList(pageNo) {
 				});
 				currPageNo = pageNo;
 				$('#currPageNo').text(pageNo);
+				toggleBtn();
 			}
 	});
 }
